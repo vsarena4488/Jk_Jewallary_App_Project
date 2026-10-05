@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -154,6 +155,7 @@ class _CartScreenState extends State<CartScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: const UserBottomNav(currentIndex: 3),
     );
   }
 }

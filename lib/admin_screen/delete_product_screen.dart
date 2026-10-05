@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/widgets/admin_bottom_nav.dart';
 
 class DeleteProductScreen extends StatelessWidget {
   const DeleteProductScreen({super.key});
@@ -7,6 +8,7 @@ class DeleteProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      bottomNavigationBar: const AdminBottomNav(currentIndex: 1),
       body: SafeArea(
         child: Center(
           child: Padding(

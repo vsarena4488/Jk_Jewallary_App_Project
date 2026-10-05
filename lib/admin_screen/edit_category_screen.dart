@@ -1,39 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:jk_jewallary_project/widgets/admin_bottom_nav.dart';
+import '../widgets/admin_bottom_nav.dart';
 
-class EditProductScreen extends StatefulWidget {
-  const EditProductScreen({super.key});
+class EditCategoryScreen extends StatefulWidget {
+  const EditCategoryScreen({super.key});
 
   @override
-  State<EditProductScreen> createState() => _EditProductScreenState();
+  State<EditCategoryScreen> createState() => _EditCategoryScreenState();
 }
 
-class _EditProductScreenState extends State<EditProductScreen> {
+class _EditCategoryScreenState extends State<EditCategoryScreen> {
   // ── Prefilled controllers ──
-  final TextEditingController _productNameController =
-      TextEditingController(text: 'Gold Necklace');
-  final TextEditingController _priceController =
-      TextEditingController(text: '45,999');
-  final TextEditingController _stockController =
-      TextEditingController(text: '12');
+  final TextEditingController _categoryNameController =
+      TextEditingController(text: 'Necklaces');
   final TextEditingController _descriptionController = TextEditingController(
-    text: 'Beautiful gold necklace with premium quality detailing.',
+    text: 'Elegant necklaces crafted with premium gold and diamonds.',
   );
 
-  // ── Category dropdown (prefilled) ──
-  String? _selectedCategory = 'Necklaces';
-  final List<String> _categories = [
-    'Rings',
-    'Necklaces',
-    'Earrings',
-    'Bracelets',
-  ];
+  // ── Prefilled dropdown ──
+  String _selectedColor = 'Purple';
 
   @override
   void dispose() {
-    _productNameController.dispose();
-    _priceController.dispose();
-    _stockController.dispose();
+    _categoryNameController.dispose();
     _descriptionController.dispose();
     super.dispose();
   }
@@ -55,7 +43,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       size: 20, color: Color(0xFF1A1A1A)),
                   Spacer(),
                   Text(
-                    'Edit Jewellery',
+                    'Edit Category',
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -78,7 +66,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   children: [
                     const SizedBox(height: 4),
 
-                    // ── Image Preview + FAB ──
+                    // ── Current Icon Preview + "+" FAB ──
                     Stack(
                       clipBehavior: Clip.none,
                       children: [
@@ -93,23 +81,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
                           ),
                           child: Center(
                             child: Container(
-                              height: 110,
-                              width: 110,
+                              height: 100,
+                              width: 100,
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
+                                color: const Color(0xFFF3E5F5), // light purple
+                                borderRadius: BorderRadius.circular(12),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Image.asset(
-                                  'resources/images/products/gold_necklace.jpg',
-                                  fit: BoxFit.contain,
-                                  errorBuilder: (_, __, ___) => Icon(
-                                    Icons.diamond,
-                                    size: 44,
-                                    color: Colors.grey.shade400,
-                                  ),
-                                ),
+                              child: const Icon(
+                                Icons.abc,
+                                size: 44,
+                                color: Color(0xFF8E24AA), // purple
                               ),
                             ),
                           ),
@@ -142,15 +123,15 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
                     const SizedBox(height: 28),
 
-                    // ── Product Name ──
-                    _label('Product Name'),
+                    // ── Category Name ──
+                    _label('Category Name'),
                     const SizedBox(height: 10),
-                    _textField(controller: _productNameController),
+                    _textField(controller: _categoryNameController),
 
                     const SizedBox(height: 20),
 
-                    // ── Category ──
-                    _label('Category'),
+                    // ── Category Color ──
+                    _label('Category Color'),
                     const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -161,7 +142,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       ),
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
-                          value: _selectedCategory,
+                          value: _selectedColor,
                           isExpanded: true,
                           icon: const Icon(
                             Icons.keyboard_arrow_down,
@@ -173,104 +154,23 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             color: Color(0xFF1A1A1A),
                           ),
                           borderRadius: BorderRadius.circular(10),
-                          items: _categories.map((String category) {
-                            return DropdownMenuItem<String>(
-                              value: category,
-                              child: Text(category),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _selectedCategory = newValue;
-                            });
+                          items: const [
+                            DropdownMenuItem(
+                                value: 'Purple', child: Text('Purple')),
+                            DropdownMenuItem(
+                                value: 'Blue', child: Text('Blue')),
+                            DropdownMenuItem(
+                                value: 'Green', child: Text('Green')),
+                            DropdownMenuItem(
+                                value: 'Orange', child: Text('Orange')),
+                          ],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => _selectedColor = value);
+                            }
                           },
                         ),
                       ),
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    // ── Price + Stock Row ──
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Price
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _label('Price'),
-                              const SizedBox(height: 10),
-                              TextField(
-                                controller: _priceController,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  prefixIcon: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 16, right: 8),
-                                    child: Text(
-                                      '₹',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey.shade600,
-                                      ),
-                                    ),
-                                  ),
-                                  prefixIconConstraints:
-                                      const BoxConstraints(minWidth: 0),
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 16),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        color: Colors.grey.shade300),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: const BorderSide(
-                                        color: Color(0xFF3B2E9B),
-                                        width: 1.5),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        const SizedBox(width: 14),
-
-                        // Stock Quantity
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _label('Stock Quantity'),
-                              const SizedBox(height: 10),
-                              TextField(
-                                controller: _stockController,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 16),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        color: Colors.grey.shade300),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: const BorderSide(
-                                        color: Color(0xFF3B2E9B),
-                                        width: 1.5),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
                     ),
 
                     const SizedBox(height: 20),
@@ -282,6 +182,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       controller: _descriptionController,
                       maxLines: 4,
                       decoration: InputDecoration(
+                        hintText: 'Short description about this category...',
+                        hintStyle: TextStyle(
+                          color: Colors.grey.shade400,
+                          fontSize: 14,
+                        ),
                         contentPadding: const EdgeInsets.all(16),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -307,17 +212,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
               decoration: BoxDecoration(
                 color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.06),
-                    blurRadius: 12,
-                    offset: const Offset(0, -4),
-                  ),
-                ],
+                border: Border(
+                  top: BorderSide(color: Colors.grey.shade200, width: 1),
+                ),
               ),
               child: Column(
                 children: [
-                  // Update Product Button
+                  // Update Button
                   SizedBox(
                     width: double.infinity,
                     height: 52,
@@ -331,7 +232,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         elevation: 0,
                       ),
                       child: const Text(
-                        'Update Product',
+                        'Update Category',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -343,14 +244,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
                   const SizedBox(height: 12),
 
-                  // Delete Product (text button)
+                  // Delete Category (text button)
                   GestureDetector(
                     onTap: () {},
                     behavior: HitTestBehavior.opaque,
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 6),
                       child: Text(
-                        'Delete Product',
+                        'Delete Category',
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -366,8 +267,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
         ),
       ),
 
-      // ── Admin Bottom Navigation ──
-      bottomNavigationBar: const AdminBottomNav(currentIndex: 1),
+      // ── Admin Bottom Navigation (shared widget) ──
+      bottomNavigationBar: const AdminBottomNav(currentIndex: 2),
     );
   }
 
@@ -396,8 +297,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-              color: Color(0xFF3B2E9B), width: 1.5),
+          borderSide:
+              const BorderSide(color: Color(0xFF3B2E9B), width: 1.5),
         ),
       ),
     );
