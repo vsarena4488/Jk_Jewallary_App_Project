@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'update_order_status_screen.dart';
 import '../widgets/admin_bottom_nav.dart';
 
 class ManageOrdersScreen extends StatelessWidget {
@@ -263,7 +264,14 @@ class _OrderCard extends StatelessWidget {
               // Button
               _isPrimaryButton
                   ? ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const UpdateOrderStatusScreen(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3B2E9B),
                         shape: RoundedRectangleBorder(

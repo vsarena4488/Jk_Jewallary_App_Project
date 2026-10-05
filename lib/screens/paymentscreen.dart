@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
+import 'orderhistoryscreen.dart';
+
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
 
@@ -140,7 +142,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const OrderHistoryScreen()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

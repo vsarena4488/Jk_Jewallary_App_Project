@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'add_category_screen.dart';
+import 'edit_category_screen.dart';
 import '../widgets/admin_bottom_nav.dart';
 
 class ManageCategoriesScreen extends StatelessWidget {
@@ -45,12 +48,14 @@ class ManageCategoriesScreen extends StatelessWidget {
           children: [
             // ── Top App Bar ──
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
                 children: const [
-                  Icon(Icons.arrow_back_ios_new,
-                      size: 20, color: Color(0xFF1A1A1A)),
+                  Icon(
+                    Icons.arrow_back_ios_new,
+                    size: 20,
+                    color: Color(0xFF1A1A1A),
+                  ),
                   Spacer(),
                   Text(
                     'Manage Categories',
@@ -99,7 +104,12 @@ class ManageCategoriesScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const AddCategoryScreen()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(
@@ -130,7 +140,7 @@ class ManageCategoriesScreen extends StatelessWidget {
       ),
 
       // ── Admin Bottom Navigation (shared widget) ──
-      bottomNavigationBar: const AdminBottomNav(currentIndex: 1),
+      bottomNavigationBar: const AdminBottomNav(currentIndex: 2),
     );
   }
 }
@@ -170,11 +180,7 @@ class _CategoryTile extends StatelessWidget {
               color: iconBg,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              icon,
-              size: 28,
-              color: iconColor,
-            ),
+            child: Icon(icon, size: 28, color: iconColor),
           ),
 
           const SizedBox(width: 14),
@@ -195,27 +201,33 @@ class _CategoryTile extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   '$count Products',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
               ],
             ),
           ),
 
           // ── Edit Button ──
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F5),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Icons.edit_outlined,
-              size: 18,
-              color: Color(0xFF1A1A1A),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const EditCategoryScreen()),
+              );
+            },
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF5F5F5),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(
+                Icons.edit_outlined,
+                size: 18,
+                color: Color(0xFF1A1A1A),
+              ),
             ),
           ),
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'add_user_screen.dart';
 import '../widgets/admin_bottom_nav.dart';
 
 class ManageUsersScreen extends StatelessWidget {
@@ -127,20 +128,14 @@ class ManageUsersScreen extends StatelessWidget {
       ),
 
       // ── Floating Add User Button ──
-      floatingActionButton: Container(
-        width: 56,
-        height: 56,
-        decoration: BoxDecoration(
-          color: const Color(0xFF3B2E9B),
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF3B2E9B).withOpacity(0.35),
-              blurRadius: 16,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AddUserScreen()),
+          );
+        },
+        backgroundColor: const Color(0xFF3B2E9B),
         child: const Icon(Icons.add, color: Colors.white, size: 30),
       ),
 

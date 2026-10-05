@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
+import 'orderhistoryscreen.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -70,11 +72,11 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 50),
 
                     // ── Menu Items ──
-                    _menuItem('My Orders'),
+                    _menuItem(context, 'My Orders', const OrderHistoryScreen()),
                     const Divider(height: 1, color: Color(0xFFEEEEEE)),
-                    _menuItem('My Wishlist'),
+                    _menuItem(context, 'My Wishlist'),
                     const Divider(height: 1, color: Color(0xFFEEEEEE)),
-                    _menuItem('Edit profile'),
+                    _menuItem(context, 'Edit profile'),
 
                     const SizedBox(height: 120),
 
@@ -125,9 +127,13 @@ class ProfileScreen extends StatelessWidget {
   }
 
   // ── Menu Item Row ──
-  static Widget _menuItem(String title) {
+  static Widget _menuItem(BuildContext context, String title, [Widget? page]) {
     return GestureDetector(
-      onTap: () {},
+      onTap: page == null
+          ? null
+          : () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+            },
       behavior: HitTestBehavior.opaque,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 22),

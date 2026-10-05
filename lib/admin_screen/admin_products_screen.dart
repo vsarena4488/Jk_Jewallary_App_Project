@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jk_jewallary_project/widgets/admin_bottom_nav.dart';
 
+import 'add_product_screen.dart';
+import 'delete_product_screen.dart';
+import 'edit_product_screen.dart';
+
 class AdminProductsScreen extends StatelessWidget {
   const AdminProductsScreen({super.key});
 
@@ -85,20 +89,14 @@ class AdminProductsScreen extends StatelessWidget {
       ),
 
       // ── Floating Add Button ──
-      floatingActionButton: Container(
-        width: 60,
-        height: 60,
-        decoration: BoxDecoration(
-          color: const Color(0xFF3B2E9B),
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF3B2E9B).withOpacity(0.35),
-              blurRadius: 16,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AddProductScreen()),
+          );
+        },
+        backgroundColor: const Color(0xFF3B2E9B),
         child: const Icon(Icons.add, color: Colors.white, size: 32),
       ),
 
@@ -188,15 +186,19 @@ class _ProductTile extends StatelessWidget {
                 Row(
                   children: [
                     _actionButton(
+                      context: context,
                       label: 'Edit',
                       bg: const Color(0xFFEBE4F7),
                       textColor: const Color(0xFF3B2E9B),
+                      page: const EditProductScreen(),
                     ),
                     const SizedBox(width: 8),
                     _actionButton(
+                      context: context,
                       label: 'Delete',
                       bg: const Color(0xFFFFEBEE),
                       textColor: const Color(0xFFE53935),
+                      page: const DeleteProductScreen(),
                     ),
                   ],
                 ),
@@ -210,22 +212,27 @@ class _ProductTile extends StatelessWidget {
 
   // ── Small Action Button ──
   Widget _actionButton({
+    required BuildContext context,
     required String label,
     required Color bg,
     required Color textColor,
+    required Widget page,
   }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: textColor,
+    return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+      },
+      borderRadius: BorderRadius.circular(6),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: textColor,
+          ),
         ),
       ),
     );

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/admin_bottom_nav.dart';
+import 'admin_products_screen.dart';
+import 'edit_profile_screen.dart';
+import 'manage_orders_screen.dart';
+
 class AdminProfileScreen extends StatelessWidget {
   const AdminProfileScreen({super.key});
 
@@ -105,18 +110,24 @@ class AdminProfileScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           _menuItem(
+                            context: context,
                             icon: Icons.inventory_2_outlined,
                             title: 'Orders',
+                            page: const ManageOrdersScreen(),
                           ),
                           _divider(),
                           _menuItem(
+                            context: context,
                             icon: Icons.local_offer_outlined,
                             title: 'Products',
+                            page: const AdminProductsScreen(),
                           ),
                           _divider(),
                           _menuItem(
+                            context: context,
                             icon: Icons.person_outline,
                             title: 'Edit Profile',
+                            page: const EditProfileScreen(),
                           ),
                         ],
                       ),
@@ -164,13 +175,21 @@ class AdminProfileScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const AdminBottomNav(currentIndex: 5),
     );
   }
 
   // ── Menu Item Row ──
-  Widget _menuItem({required IconData icon, required String title}) {
+  Widget _menuItem({
+    required BuildContext context,
+    required IconData icon,
+    required String title,
+    required Widget page,
+  }) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+      },
       child: Padding(
         padding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 18),

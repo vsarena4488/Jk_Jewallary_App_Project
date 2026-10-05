@@ -1,9 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/admin_screen/admin_dashboard_screen.dart';
+import 'package:jk_jewallary_project/admin_screen/admin_products_screen.dart';
+import 'package:jk_jewallary_project/admin_screen/admin_profile_screen.dart';
+import 'package:jk_jewallary_project/admin_screen/manage_categories_screen.dart';
+import 'package:jk_jewallary_project/admin_screen/manage_orders_screen.dart';
+import 'package:jk_jewallary_project/admin_screen/manage_users_screen.dart';
 
 class AdminBottomNav extends StatelessWidget {
   final int currentIndex;
 
   const AdminBottomNav({super.key, this.currentIndex = 1});
+
+  void _onTap(BuildContext context, int index) {
+    if (index == currentIndex) return;
+
+    Widget? page;
+    switch (index) {
+      case 0:
+        page = const AdminDashboardScreen();
+        break;
+      case 1:
+        page = const AdminProductsScreen();
+        break;
+      case 2:
+        page = const ManageCategoriesScreen();
+        break;
+      case 3:
+        page = const ManageOrdersScreen();
+        break;
+      case 4:
+        page = const ManageUsersScreen();
+        break;
+      case 5:
+        page = const AdminProfileScreen();
+        break;
+    }
+
+    if (page != null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => page!),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +101,9 @@ class AdminBottomNav extends StatelessWidget {
               final isSelected = index == currentIndex;
 
               return Expanded(
-                child: Column(
+                child: InkWell(
+                  onTap: () => _onTap(context, index),
+                  child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
@@ -90,6 +131,7 @@ class AdminBottomNav extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
+                  ),
                 ),
               );
             }),

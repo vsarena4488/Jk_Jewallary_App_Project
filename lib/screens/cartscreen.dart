@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
+import 'checkoutscreen.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -131,7 +133,12 @@ class _CartScreenState extends State<CartScreen> {
                     width: double.infinity,
                     height: 52,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const CheckoutScreen()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3B2E9B),
                         shape: RoundedRectangleBorder(
