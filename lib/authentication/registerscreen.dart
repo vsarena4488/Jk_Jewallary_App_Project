@@ -65,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 10),
               _buildTextField(
                 controller: _fullNameController,
-                hint: 'Enter The Email',
+                hint: 'Enter Your Name',
               ),
 
               const SizedBox(height: 22),
@@ -83,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 10),
               _buildTextField(
                 controller: _emailController,
-                hint: 'Enter The Email',
+                hint: 'Enter Your Phone Number',
                 keyboardType: TextInputType.emailAddress,
               ),
 
@@ -150,7 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(
@@ -185,7 +185,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context); // Go back to Login screen
+                      Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: const Text(
                       'Login',

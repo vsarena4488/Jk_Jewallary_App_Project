@@ -17,11 +17,13 @@ class CheckoutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
-                children: const [
-                  Icon(Icons.arrow_back_ios_new,
-                      size: 20, color: Color(0xFF1A1A1A)),
-                  Spacer(),
-                  Text(
+                children: [
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+                  ),
+                  const Spacer(),
+                  const Text(
                     'Place Order',
                     style: TextStyle(
                       fontSize: 17,
@@ -29,8 +31,8 @@ class CheckoutScreen extends StatelessWidget {
                       color: Color(0xFF1A1A1A),
                     ),
                   ),
-                  Spacer(),
-                  SizedBox(width: 20), // balances the back icon
+                  const Spacer(),
+                  const SizedBox(width: 48),
                 ],
               ),
             ),

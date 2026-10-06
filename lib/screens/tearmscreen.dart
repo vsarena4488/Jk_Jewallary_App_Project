@@ -19,7 +19,7 @@ class TermsScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.pop(context),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
@@ -131,7 +131,7 @@ class TermsScreen extends StatelessWidget {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

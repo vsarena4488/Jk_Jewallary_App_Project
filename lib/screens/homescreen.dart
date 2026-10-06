@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
+import 'jewelleryscreen.dart';
+import 'productdetailsscreen.dart';
+import 'searchfilterscreen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -65,10 +69,12 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.grey,
                             size: 22,
                           ),
-                          suffixIcon: const Icon(
-                            Icons.tune,
-                            color: Colors.grey,
-                            size: 22,
+                          suffixIcon: IconButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => const SearchFilterScreen()),
+                            ),
+                            icon: const Icon(Icons.tune, color: Colors.grey, size: 22),
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(
@@ -81,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 26),
 
                     // ── Categories Header ──
-                    _sectionHeader('Categories'),
+                    _sectionHeader(context, 'Categories'),
 
                     const SizedBox(height: 16),
 
@@ -102,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 28),
 
                     // ── New Arrivals Header ──
-                    _sectionHeader('New Arrivals'),
+                    _sectionHeader(context, 'New Arrivals'),
 
                     const SizedBox(height: 16),
 
@@ -137,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 28),
 
                     // ── Popular Products Header ──
-                    _sectionHeader('Popular Products'),
+                    _sectionHeader(context, 'Popular Products'),
 
                     const SizedBox(height: 16),
 
@@ -182,7 +188,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   // ── Section Header with "View All" ──
-  Widget _sectionHeader(String title) {
+  Widget _sectionHeader(BuildContext context, String title) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -194,12 +200,18 @@ class HomeScreen extends StatelessWidget {
             color: Color(0xFF1A1A1A),
           ),
         ),
-        const Text(
-          'View All',
-          style: TextStyle(
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const JewelleryScreen()),
+          ),
+          child: const Text(
+            'View All',
+            style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
             color: Color(0xFF3B2E9B),
+            ),
           ),
         ),
       ],
@@ -256,7 +268,13 @@ class _ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const ProductDetailsScreen()),
+      ),
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
       width: 160, // ✅ Fixed width for horizontal scroll
       decoration: BoxDecoration(
         color: Colors.white,
@@ -333,6 +351,7 @@ class _ProductCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }

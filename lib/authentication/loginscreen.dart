@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, '/forgot-password'),
                   child: const Text(
                     'FORGET PASSWORD ?',
                     style: TextStyle(
@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushReplacementNamed(context, '/admin'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(
@@ -179,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () => Navigator.pushNamed(context, '/register'),
                     child: const Text(
                       'Register',
                       style: TextStyle(

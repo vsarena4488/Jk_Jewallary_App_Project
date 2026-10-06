@@ -113,7 +113,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, '/otp'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

@@ -32,7 +32,7 @@ class _OtpScreenState extends State<OtpScreen> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.pop(context),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
@@ -107,7 +107,7 @@ class _OtpScreenState extends State<OtpScreen> {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, '/password'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

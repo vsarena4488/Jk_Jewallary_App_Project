@@ -35,7 +35,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.pop(context),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
@@ -102,7 +102,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/login',
+                    (route) => false,
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

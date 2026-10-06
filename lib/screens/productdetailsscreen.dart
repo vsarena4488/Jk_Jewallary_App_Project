@@ -25,10 +25,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 20,
-                    color: Color(0xFF1A1A1A),
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+                    color: const Color(0xFF1A1A1A),
                   ),
                   const Spacer(),
                   const Icon(

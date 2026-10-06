@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
+import '../authentication/loginscreen.dart';
+
 import 'orderhistoryscreen.dart';
+import 'wishlistscreen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -74,7 +77,7 @@ class ProfileScreen extends StatelessWidget {
                     // ── Menu Items ──
                     _menuItem(context, 'My Orders', const OrderHistoryScreen()),
                     const Divider(height: 1, color: Color(0xFFEEEEEE)),
-                    _menuItem(context, 'My Wishlist'),
+                    _menuItem(context, 'My Wishlist', const WishlistScreen()),
                     const Divider(height: 1, color: Color(0xFFEEEEEE)),
                     _menuItem(context, 'Edit profile'),
 
@@ -85,7 +88,11 @@ class ProfileScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 52,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (_) => const LoginScreen()),
+                          (route) => false,
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFE53935), // red
                           shape: RoundedRectangleBorder(

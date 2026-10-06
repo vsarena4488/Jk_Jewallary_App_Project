@@ -3,6 +3,7 @@ import 'package:jk_jewallary_project/screens/cartscreen.dart';
 import 'package:jk_jewallary_project/screens/homescreen.dart';
 import 'package:jk_jewallary_project/screens/jewelleryscreen.dart';
 import 'package:jk_jewallary_project/screens/profilescreen.dart';
+import 'package:jk_jewallary_project/screens/wishlistscreen.dart';
 
 class UserBottomNav extends StatelessWidget {
   final int currentIndex;
@@ -20,7 +21,9 @@ class UserBottomNav extends StatelessWidget {
       case 1:
         page = const JewelleryScreen();
         break;
-      // A wishlist screen has not been created yet.
+      case 2:
+        page = const WishlistScreen();
+        break;
       case 3:
         page = const CartScreen();
         break;

@@ -3,6 +3,7 @@ import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
 import 'productdetailsscreen.dart';
 import 'searchfilterscreen.dart';
+import 'cartscreen.dart';
 
 class JewelleryScreen extends StatelessWidget {
   const JewelleryScreen({super.key});
@@ -19,10 +20,10 @@ class JewelleryScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 20,
-                    color: Color(0xFF1A1A1A),
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+                    color: const Color(0xFF1A1A1A),
                   ),
                   const Spacer(),
                   const Text(
@@ -34,10 +35,13 @@ class JewelleryScreen extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  const Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 24,
-                    color: Color(0xFF1A1A1A),
+                  IconButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const CartScreen()),
+                    ),
+                    icon: const Icon(Icons.shopping_cart_outlined, size: 24),
+                    color: const Color(0xFF1A1A1A),
                   ),
                 ],
               ),
