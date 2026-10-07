@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/resources/imagestring.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
 import 'checkoutscreen.dart';
@@ -16,13 +17,13 @@ class _CartScreenState extends State<CartScreen> {
     {
       'name': 'Gold Necklace',
       'price': '₹45,999',
-      'image': 'resources/images/products/gold_necklace.jpg',
+      'image': s1,
       'qty': 1,
     },
     {
       'name': 'Gold Earrings',
       'price': '₹22,999',
-      'image': 'resources/images/products/gold_earrings.jpg',
+      'image': s2[2],
       'qty': 1,
     },
   ];

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/resources/imagestring.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
 import 'jewelleryscreen.dart';
@@ -72,9 +73,15 @@ class HomeScreen extends StatelessWidget {
                           suffixIcon: IconButton(
                             onPressed: () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (_) => const SearchFilterScreen()),
+                              MaterialPageRoute(
+                                builder: (_) => const SearchFilterScreen(),
+                              ),
                             ),
-                            icon: const Icon(Icons.tune, color: Colors.grey, size: 22),
+                            icon: const Icon(
+                              Icons.tune,
+                              color: Colors.grey,
+                              size: 22,
+                            ),
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(
@@ -94,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                     // ── Categories Row ──
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         _CategoryItem(
                           label: 'Rings',
                           icon: Icons.circle_outlined,
@@ -118,21 +125,21 @@ class HomeScreen extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         physics: const BouncingScrollPhysics(),
-                        children: const [
+                        children: [
                           _ProductCard(
-                            imageUrl: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400',
+                            imagePath: s1,
                             name: 'Gold Necklace',
                             price: '₹45,999',
                           ),
                           SizedBox(width: 14),
                           _ProductCard(
-                            imageUrl: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400',
+                            imagePath: s2[1],
                             name: 'Diamond Ring',
                             price: '₹25,999',
                           ),
                           SizedBox(width: 14),
                           _ProductCard(
-                            imageUrl: 'https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?w=400',
+                            imagePath: s2[2],
                             name: 'Emerald Pendant',
                             price: '₹32,999',
                           ),
@@ -153,21 +160,21 @@ class HomeScreen extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         physics: const BouncingScrollPhysics(),
-                        children: const [
+                        children: [
                           _ProductCard(
-                            imageUrl: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400',
+                            imagePath: s2[3],
                             name: 'Gold Earrings',
                             price: '₹22,999',
                           ),
-                          SizedBox(width: 14),
+                          const SizedBox(width: 14),
                           _ProductCard(
-                            imageUrl: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400',
+                            imagePath: s2[1],
                             name: 'Silver Bracelet',
                             price: '₹15,999',
                           ),
-                          SizedBox(width: 14),
+                          const SizedBox(width: 14),
                           _ProductCard(
-                            imageUrl: 'https://images.unsplash.com/photo-1598560917505-59a3ad559071?w=400',
+                            imagePath: s2[2],
                             name: 'Rose Gold Ring',
                             price: '₹18,999',
                           ),
@@ -208,9 +215,9 @@ class HomeScreen extends StatelessWidget {
           child: const Text(
             'View All',
             style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF3B2E9B),
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF3B2E9B),
             ),
           ),
         ),
@@ -256,12 +263,12 @@ class _CategoryItem extends StatelessWidget {
 
 // ── Product Card Widget (Fixed Width for Horizontal Scroll) ──
 class _ProductCard extends StatelessWidget {
-  final String imageUrl;
+  final String imagePath;
   final String name;
   final String price;
 
   const _ProductCard({
-    required this.imageUrl,
+    required this.imagePath,
     required this.name,
     required this.price,
   });
@@ -275,83 +282,86 @@ class _ProductCard extends StatelessWidget {
       ),
       borderRadius: BorderRadius.circular(12),
       child: Container(
-      width: 160, // ✅ Fixed width for horizontal scroll
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image + wishlist icon
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Container(
-                  height: 130,
-                  width: double.infinity,
-                  color: const Color(0xFFF5F5F5),
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) =>
-                        const Icon(Icons.diamond, size: 40, color: Colors.grey),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.favorite_border,
-                    size: 16,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          // Details
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        width: 160, // ✅ Fixed width for horizontal scroll
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.shade200),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Image + wishlist icon
+            Stack(
               children: [
-                Text(
-                  name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF1A1A1A),
+                ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(12),
+                  ),
+                  child: Container(
+                    height: 130,
+                    width: double.infinity,
+                    color: const Color(0xFFF5F5F5),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const Icon(
+                        Icons.diamond,
+                        size: 40,
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  price,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF3B2E9B),
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.favorite_border,
+                      size: 16,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
+
+            // Details
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF1A1A1A),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    price,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF3B2E9B),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

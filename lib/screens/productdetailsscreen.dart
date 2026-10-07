@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/resources/imagestring.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
 import 'cartscreen.dart';
@@ -69,7 +70,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(20),
                             child: Image.asset(
-                              'resources/images/products/gold_necklace.jpg',
+                              s1,
                               fit: BoxFit.contain,
                               errorBuilder: (_, __, ___) => const Icon(
                                 Icons.diamond,

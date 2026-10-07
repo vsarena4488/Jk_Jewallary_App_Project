@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/resources/imagestring.dart';
 import 'package:jk_jewallary_project/widgets/admin_bottom_nav.dart';
 
 class EditProductScreen extends StatefulWidget {
@@ -10,12 +11,15 @@ class EditProductScreen extends StatefulWidget {
 
 class _EditProductScreenState extends State<EditProductScreen> {
   // ── Prefilled controllers ──
-  final TextEditingController _productNameController =
-      TextEditingController(text: 'Gold Necklace');
-  final TextEditingController _priceController =
-      TextEditingController(text: '45,999');
-  final TextEditingController _stockController =
-      TextEditingController(text: '12');
+  final TextEditingController _productNameController = TextEditingController(
+    text: 'Gold Necklace',
+  );
+  final TextEditingController _priceController = TextEditingController(
+    text: '45,999',
+  );
+  final TextEditingController _stockController = TextEditingController(
+    text: '12',
+  );
   final TextEditingController _descriptionController = TextEditingController(
     text: 'Beautiful gold necklace with premium quality detailing.',
   );
@@ -47,12 +51,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
           children: [
             // ── Top App Bar ──
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
                 children: const [
-                  Icon(Icons.arrow_back_ios_new,
-                      size: 20, color: Color(0xFF1A1A1A)),
+                  Icon(
+                    Icons.arrow_back_ios_new,
+                    size: 20,
+                    color: Color(0xFF1A1A1A),
+                  ),
                   Spacer(),
                   Text(
                     'Edit Jewellery',
@@ -102,7 +108,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                               child: Padding(
                                 padding: const EdgeInsets.all(12),
                                 child: Image.asset(
-                                  'resources/images/products/gold_necklace.jpg',
+                                  s1,
                                   fit: BoxFit.contain,
                                   errorBuilder: (_, __, ___) => Icon(
                                     Icons.diamond,
@@ -125,10 +131,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             decoration: BoxDecoration(
                               color: const Color(0xFF3B2E9B),
                               shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 2,
-                              ),
+                              border: Border.all(color: Colors.white, width: 2),
                             ),
                             child: const Icon(
                               Icons.add,
@@ -207,7 +210,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                 decoration: InputDecoration(
                                   prefixIcon: Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 16, right: 8),
+                                      left: 16,
+                                      right: 8,
+                                    ),
                                     child: Text(
                                       '₹',
                                       style: TextStyle(
@@ -216,21 +221,25 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       ),
                                     ),
                                   ),
-                                  prefixIconConstraints:
-                                      const BoxConstraints(minWidth: 0),
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 16),
+                                  prefixIconConstraints: const BoxConstraints(
+                                    minWidth: 0,
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 16,
+                                  ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(
-                                        color: Colors.grey.shade300),
+                                      color: Colors.grey.shade300,
+                                    ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: const BorderSide(
-                                        color: Color(0xFF3B2E9B),
-                                        width: 1.5),
+                                      color: Color(0xFF3B2E9B),
+                                      width: 1.5,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -251,19 +260,22 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                 controller: _stockController,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 16),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 16,
+                                  ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(
-                                        color: Colors.grey.shade300),
+                                      color: Colors.grey.shade300,
+                                    ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: const BorderSide(
-                                        color: Color(0xFF3B2E9B),
-                                        width: 1.5),
+                                      color: Color(0xFF3B2E9B),
+                                      width: 1.5,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -285,13 +297,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         contentPadding: const EdgeInsets.all(16),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              BorderSide(color: Colors.grey.shade300),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Color(0xFF3B2E9B), width: 1.5),
+                            color: Color(0xFF3B2E9B),
+                            width: 1.5,
+                          ),
                         ),
                       ),
                     ),
@@ -388,16 +401,17 @@ class _EditProductScreenState extends State<EditProductScreen> {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.grey.shade300),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-              color: Color(0xFF3B2E9B), width: 1.5),
+          borderSide: const BorderSide(color: Color(0xFF3B2E9B), width: 1.5),
         ),
       ),
     );

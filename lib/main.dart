@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+// admin screens
 import 'package:jk_jewallary_project/admin_screen/add_category_screen.dart';
 import 'package:jk_jewallary_project/admin_screen/add_product_screen.dart';
 import 'package:jk_jewallary_project/admin_screen/add_user_screen.dart';
@@ -13,11 +15,15 @@ import 'package:jk_jewallary_project/admin_screen/manage_categories_screen.dart'
 import 'package:jk_jewallary_project/admin_screen/manage_orders_screen.dart';
 import 'package:jk_jewallary_project/admin_screen/manage_users_screen.dart';
 import 'package:jk_jewallary_project/admin_screen/update_order_status_screen.dart';
+
+//authentication screens
 import 'package:jk_jewallary_project/authentication/forgotPasswordScreen.dart';
 import 'package:jk_jewallary_project/authentication/loginscreen.dart';
 import 'package:jk_jewallary_project/authentication/otpscreen.dart';
 import 'package:jk_jewallary_project/authentication/passwordscreen.dart';
 import 'package:jk_jewallary_project/authentication/registerscreen.dart';
+
+//user screens
 import 'package:jk_jewallary_project/screens/cartscreen.dart';
 import 'package:jk_jewallary_project/screens/checkoutscreen.dart';
 import 'package:jk_jewallary_project/screens/homescreen.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jk_jewallary_project/resources/imagestring.dart';
 import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 
 import 'productdetailsscreen.dart';
@@ -139,7 +140,7 @@ class JewelleryScreen extends StatelessWidget {
                 itemBuilder: (_, index) {
                   final products = _products[index % _products.length];
                   return _ProductCard(
-                    imageUrl: products['image']!,
+                    imagePath: products['image']!,
                     name: products['name']!,
                     price: products['price']!,
                   );
@@ -159,26 +160,22 @@ class JewelleryScreen extends StatelessWidget {
 // ── Sample Product Data ──
 final List<Map<String, String>> _products = [
   {
-    'image':
-        'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400',
+    'image': s1,
     'name': 'Gold Necklace',
     'price': '₹45,999',
   },
   {
-    'image':
-        'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400',
+    'image': s2[1],
     'name': 'Diamond Ring',
     'price': '₹25,999',
   },
   {
-    'image':
-        'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400',
+    'image': s2[2],
     'name': 'Gold Earrings',
     'price': '₹22,999',
   },
   {
-    'image':
-        'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400',
+    'image': s2[3],
     'name': 'Silver Bracelet',
     'price': '₹15,999',
   },
@@ -186,12 +183,12 @@ final List<Map<String, String>> _products = [
 
 // ── Product Card Widget ──
 class _ProductCard extends StatelessWidget {
-  final String imageUrl;
+  final String imagePath;
   final String name;
   final String price;
 
   const _ProductCard({
-    required this.imageUrl,
+    required this.imagePath,
     required this.name,
     required this.price,
   });
@@ -226,8 +223,8 @@ class _ProductCard extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     color: const Color(0xFFF5F5F5),
-                    child: Image.network(
-                      imageUrl,
+                    child: Image.asset(
+                      imagePath,
                       fit: BoxFit.cover,
                       errorBuilder: (_, __, ___) => const Icon(
                         Icons.diamond,
