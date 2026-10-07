@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JK Jewellery App - Flutter Widget Tree Architecture</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 30px;
+  }
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  h1 { color: #3B2E9B; border-bottom: 3px solid #3B2E9B; padding-bottom: 12px; margin-top: 0; }
+  h2 { color: #231B66; margin-top: 40px; border-bottom: 1px solid #ddd; padding-bottom: 6px; }
+  h3 { color: #3B2E9B; margin-top: 25px; margin-bottom: 8px; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 12px;
+    background: #EBE4F7;
+    color: #3B2E9B;
+    margin-right: 6px;
+  }
+  .file-badge {
+    background: #f1f3f5;
+    color: #495057;
+    font-family: monospace;
+  }
+  pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: "Cascadia Code", "Fira Code", Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  th, td {
+    border: 1px solid #e9ecef;
+    padding: 10px 12px;
+    text-align: left;
+  }
+  th { background-color: #3B2E9B; color: #fff; }
+  tr:nth-child(even) { background-color: #f8f9fa; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .container { box-shadow: none; padding: 10px; }
+    pre { background: #f8f9fa; color: #111; border: 1px solid #ccc; page-break-inside: avoid; }
+    h2, h3 { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>JK Jewellery — Flutter Widget Tree Architecture</h1>
+<p>Complete widget tree hierarchy analysis across all <strong>33</strong> Dart screens and components in the <code>lib</code> folder.</p>
+<table>
+<thead>
+<tr><th>#</th><th>Screen / Component</th><th>Category</th><th>File Path</th><th>Type</th></tr>
+</thead>
+<tbody>
+<tr><td>01</td><td><strong>MyApp (Root Entry & Route Map)</strong></td><td>Application Root & Entry</td><td><code>lib/main.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>02</td><td><strong>LoginScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/loginscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>03</td><td><strong>RegisterScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/registerscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>04</td><td><strong>ForgotPasswordScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/forgotPasswordScreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>05</td><td><strong>OtpScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/otpscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>06</td><td><strong>PasswordScreen (Set New Password)</strong></td><td>Authentication Screens</td><td><code>lib/authentication/passwordscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>07</td><td><strong>HomeScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/homescreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>08</td><td><strong>JewelleryScreen (Catalog / All Jewellery)</strong></td><td>User Experience Screens</td><td><code>lib/screens/jewelleryscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>09</td><td><strong>SearchFilterScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/searchfilterscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>10</td><td><strong>ProductDetailsScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/productdetailsscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>11</td><td><strong>CartScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/cartscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>12</td><td><strong>CheckoutScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/checkoutscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>13</td><td><strong>PaymentScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/paymentscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>14</td><td><strong>OrderHistoryScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/orderhistoryscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>15</td><td><strong>ProfileScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/profilescreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>16</td><td><strong>WishlistScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/wishlistscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>17</td><td><strong>TermsScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/tearmscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>18</td><td><strong>AdminDashboardScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_dashboard_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>19</td><td><strong>AdminProductsScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_products_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>20</td><td><strong>AddProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_product_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>21</td><td><strong>EditProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_product_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>22</td><td><strong>DeleteProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/delete_product_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>23</td><td><strong>ManageCategoriesScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_categories_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>24</td><td><strong>AddCategoryScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_category_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>25</td><td><strong>EditCategoryScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_category_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>26</td><td><strong>ManageOrdersScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_orders_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>27</td><td><strong>UpdateOrderStatusScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/update_order_status_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>28</td><td><strong>ManageUsersScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_users_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>29</td><td><strong>AddUserScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_user_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>30</td><td><strong>AdminProfileScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_profile_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>31</td><td><strong>EditProfileScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_profile_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>32</td><td><strong>UserBottomNav</strong></td><td>Shared Bottom Navigation Widgets</td><td><code>lib/widgets/user_bottom_nav.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>33</td><td><strong>AdminBottomNav</strong></td><td>Shared Bottom Navigation Widgets</td><td><code>lib/widgets/admin_bottom_nav.dart</code></td><td>StatelessWidget</td></tr>
+</tbody></table>
+<h2>Application Root & Entry</h2>
+
+<div style="margin-bottom: 30px;">
+  <h3>01. MyApp (Root Entry & Route Map)</h3>
+  <div>
+    <span class="badge file-badge">lib/main.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Application Root & Entry</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (LoginScreen), and comprehensive named routes.</p>
+  <pre><code>MaterialApp
+├── ThemeData (colorScheme: ColorScheme.fromSeed(seedColor: #3B2E9B), useMaterial3: true)
+├── LoginScreen (home)
+└── Routes Map (30 Named Routes)
+    ├── '/login' ───────────────&gt; LoginScreen
+    ├── '/register' ────────────&gt; RegisterScreen
+    ├── '/forgot-password' ─────&gt; ForgotPasswordScreen
+    ├── '/otp' ─────────────────&gt; OtpScreen
+    ├── '/password' ────────────&gt; PasswordScreen
+    ├── '/home' ────────────────&gt; HomeScreen
+    ├── '/jewellery' ───────────&gt; JewelleryScreen
+    ├── '/filter' ──────────────&gt; SearchFilterScreen
+    ├── '/product-details' ─────&gt; ProductDetailsScreen
+    ├── '/cart' ────────────────&gt; CartScreen
+    ├── '/checkout' ────────────&gt; CheckoutScreen
+    ├── '/payment' ─────────────&gt; PaymentScreen
+    ├── '/orders' ──────────────&gt; OrderHistoryScreen
+    ├── '/profile' ─────────────&gt; ProfileScreen
+    ├── '/wishlist' ────────────&gt; WishlistScreen
+    ├── '/terms' ───────────────&gt; TermsScreen
+    ├── '/admin' ───────────────&gt; AdminDashboardScreen
+    ├── '/admin/products' ──────&gt; AdminProductsScreen
+    ├── '/admin/products/add' ──&gt; AddProductScreen
+    ├── '/admin/products/edit' ─&gt; EditProductScreen
+    ├── '/admin/products/delete'&gt; DeleteProductScreen
+    ├── '/admin/categories' ────&gt; ManageCategoriesScreen
+    ├── '/admin/categories/add' &gt; AddCategoryScreen
+    ├── '/admin/categories/edit'&gt; EditCategoryScreen
+    ├── '/admin/orders' ────────&gt; ManageOrdersScreen
+    ├── '/admin/orders/update' ─&gt; UpdateOrderStatusScreen
+    ├── '/admin/users' ─────────&gt; ManageUsersScreen
+    ├── '/admin/users/add' ─────&gt; AddUserScreen
+    ├── '/admin/profile' ───────&gt; AdminProfileScreen
+    └── '/admin/profile/edit' ──&gt; EditProfileScreen</code></pre>
+</div>
+
+<h2>Authentication Screens</h2>
+
+<div style="margin-bottom: 30px;">
+  <h3>02. LoginScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/authentication/loginscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Authentication Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">User & Admin login screen with email, password fields, link to forgot password, and navigation to admin or registration.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── SingleChildScrollView (padding: horizontal 28)
+        └── Column (crossAxisAlignment: stretch)
+            ├── SizedBox (height: 100)
+            ├── Center
+            │   └── Text("LOGIN", fontSize: 42, color: #3B2E9B)
+            ├── SizedBox (height: 100)
+            ├── Text("EMAIL", fontSize: 15, fontWeight: bold)
+            ├── SizedBox (height: 10)
+            ├── TextField (_emailController, keyboardType: emailAddress)
+            │   └── InputDecoration
+            │       ├── hintText: "Enter The Email"
+            │       ├── enabledBorder: OutlineInputBorder (radius: 10)
+            │       └── focusedBorder: OutlineInputBorder (color: #3B2E9B)
+            ├── SizedBox (height: 28)
+            ├── Text("PASSWORD", fontSize: 15, fontWeight: bold)
+            ├── SizedBox (height: 10)
+            ├── TextField (_passwordController, obscureText: true)
+            │   └── InputDecoration
+            │       ├── hintText: "Enter The Password"
+            │       ├── enabledBorder: OutlineInputBorder (radius: 10)
+            │       └── focusedBorder: OutlineInputBorder (color: #3B2E9B)
+            ├── SizedBox (height: 16)
+            ├── Align (alignment: centerRight)
+            │   └── GestureDetector (onTap -&gt; /forgot-password)
+            │       └── Text("FORGET PASSWORD ?")
+            ├── SizedBox (height: 60)
+            ├── SizedBox (height: 52)
+            │   └── ElevatedButton (onPressed -&gt; pushReplacementNamed '/admin')
+            │       └── Text("LOGIN")
+            ├── SizedBox (height: 24)
+            ├── Row (mainAxisAlignment: center)
+            │   ├── Text("Don't have an account? ")
+            │   └── GestureDetector (onTap -&gt; /register)
+            │       └── Text("Register", color: #3B2E9B)
+            └── SizedBox (height: 40)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>03. RegisterScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/authentication/registerscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Authentication Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">New account registration page with full name, email, phone, and dual password inputs.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── SingleChildScrollView (padding: horizontal 28)
+        └── Column (crossAxisAlignment: stretch)
+            ├── SizedBox (height: 50)
+            ├── Center
+            │   └── Text("REGISTER", fontSize: 42, color: #3B2E9B)
+            ├── SizedBox (height: 50)
+            ├── Text("FULL NAME")
+            ├── SizedBox (height: 10)
+            ├── TextField (_fullNameController)
+            │   └── InputDecoration (hintText: "Enter Your Name")
+            ├── SizedBox (height: 22)
+            ├── Text("EMAIL")
+            ├── SizedBox (height: 10)
+            ├── TextField (_emailController, keyboardType: emailAddress)
+            │   └── InputDecoration (hintText: "Enter Your Phone Number")
+            ├── SizedBox (height: 22)
+            ├── Text("PHONE")
+            ├── SizedBox (height: 10)
+            ├── TextField (_phoneController, keyboardType: phone)
+            │   └── InputDecoration (hintText: "Enter The Email")
+            ├── SizedBox (height: 22)
+            ├── Text("PASSWORD")
+            ├── SizedBox (height: 10)
+            ├── TextField (_passwordController, obscureText: true)
+            │   └── InputDecoration (hintText: "Enter The Password")
+            ├── SizedBox (height: 22)
+            ├── Text("PASSWORD [Confirm]")
+            ├── SizedBox (height: 10)
+            ├── TextField (_confirmPasswordController, obscureText: true)
+            │   └── InputDecoration (hintText: "Enter The Password")
+            ├── SizedBox (height: 45)
+            ├── SizedBox (height: 52)
+            │   └── ElevatedButton (onPressed -&gt; pushReplacementNamed '/home')
+            │       └── Text("REGISTER")
+            ├── SizedBox (height: 24)
+            ├── Row (mainAxisAlignment: center)
+            │   ├── Text("Already have an account? ")
+            │   └── GestureDetector (onTap -&gt; pushReplacementNamed '/login')
+            │       └── Text("Login", color: #3B2E9B)
+            └── SizedBox (height: 40)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>04. ForgotPasswordScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/authentication/forgotPasswordScreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Authentication Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Password reset initialization with email input and back navigation.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── SingleChildScrollView (padding: horizontal 28)
+        └── Column (crossAxisAlignment: stretch)
+            ├── SizedBox (height: 20)
+            ├── Align (alignment: centerLeft)
+            │   └── GestureDetector (onTap -&gt; Navigator.pop)
+            │       └── Container (decoration: circle, color: #F5F5F5)
+            │           └── Icon(Icons.arrow_back_ios_new, color: #3B2E9B)
+            ├── SizedBox (height: 80)
+            ├── Center
+            │   └── Text("FORGET", fontSize: 42, color: #3B2E9B)
+            ├── SizedBox (height: 120)
+            ├── Text("EMAIL")
+            ├── SizedBox (height: 10)
+            ├── TextField (_emailController, keyboardType: emailAddress)
+            │   └── InputDecoration (hintText: "Enter The Email")
+            ├── SizedBox (height: 120)
+            ├── SizedBox (height: 52)
+            │   └── ElevatedButton (onPressed -&gt; pushNamed '/otp')
+            │       └── Text("OTP")
+            └── SizedBox (height: 40)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>05. OtpScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/authentication/otpscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Authentication Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">OTP verification input screen.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── SingleChildScrollView (padding: horizontal 28)
+        └── Column (crossAxisAlignment: stretch)
+            ├── SizedBox (height: 20)
+            ├── Align (alignment: centerLeft)
+            │   └── GestureDetector (onTap -&gt; Navigator.pop)
+            │       └── Container (circle background)
+            │           └── Icon(Icons.arrow_back_ios_new, color: #3B2E9B)
+            ├── SizedBox (height: 80)
+            ├── Center
+            │   └── Text("OTP", fontSize: 42, color: #3B2E9B)
+            ├── SizedBox (height: 120)
+            ├── Text("ENTER OTP")
+            ├── SizedBox (height: 10)
+            ├── TextField (_otpController, keyboardType: number)
+            │   └── InputDecoration (hintText: "Enter The OTP")
+            ├── SizedBox (height: 120)
+            ├── SizedBox (height: 52)
+            │   └── ElevatedButton (onPressed -&gt; pushNamed '/password')
+            │       └── Text("OTP")
+            └── SizedBox (height: 40)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>06. PasswordScreen (Set New Password)</h3>
+  <div>
+    <span class="badge file-badge">lib/authentication/passwordscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Authentication Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Allows user to submit a new password and confirmation after OTP verification.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── SingleChildScrollView (padding: horizontal 28)
+        └── Column (crossAxisAlignment: stretch)
+            ├── SizedBox (height: 20)
+            ├── Align (alignment: centerLeft)
+            │   └── GestureDetector (onTap -&gt; Navigator.pop)
+            │       └── Container (circle background)
+            │           └── Icon(Icons.arrow_back_ios_new, color: #3B2E9B)
+            ├── SizedBox (height: 60)
+            ├── Center
+            │   └── Text("PASSWORD", fontSize: 38, color: #3B2E9B)
+            ├── SizedBox (height: 110)
+            ├── Text("NEW PASSWORD")
+            ├── SizedBox (height: 10)
+            ├── TextField (_newPasswordController, obscureText: true)
+            │   └── InputDecoration (contentPadding: 16)
+            ├── SizedBox (height: 28)
+            ├── Text("CONFORM PASSWORD")
+            ├── SizedBox (height: 10)
+            ├── TextField (_confirmPasswordController, obscureText: true)
+            │   └── InputDecoration (contentPadding: 16)
+            ├── SizedBox (height: 130)
+            ├── SizedBox (height: 52)
+            │   └── ElevatedButton (onPressed -&gt; pushNamedAndRemoveUntil '/login')
+            │       └── Text("CHANGE PASSWORD")
+            └── SizedBox (height: 40)</code></pre>
+</div>
+
+<h2>User Experience Screens</h2>
+
+<div style="margin-bottom: 30px;">
+  <h3>07. HomeScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/homescreen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Main consumer storefront landing screen. Top user bar, search input, circular category badges, horizontal New Arrivals list, and horizontal Popular Products carousel.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       └── Expanded
+│           └── SingleChildScrollView (padding: horizontal 20)
+│               └── Column (crossAxisAlignment: start)
+│                   ├── SizedBox (height: 12)
+│                   ├── Row (Top Bar)
+│                   │   ├── Icon(Icons.menu, color: #1A1A1A)
+│                   │   ├── SizedBox (width: 14)
+│                   │   ├── Text("Hi, User", fontSize: 18, fontWeight: bold)
+│                   │   ├── Spacer()
+│                   │   └── Icon(Icons.notifications_none)
+│                   ├── SizedBox (height: 20)
+│                   ├── Container (Search Bar Container, decoration: #F5F5F5)
+│                   │   └── TextField
+│                   │       └── InputDecoration (border: none)
+│                   │           ├── prefixIcon: Icon(Icons.search)
+│                   │           ├── hintText: "Search jewellery..."
+│                   │           └── suffixIcon: IconButton (onPressed -&gt; SearchFilterScreen)
+│                   │               └── Icon(Icons.tune)
+│                   ├── SizedBox (height: 26)
+│                   ├── Row (_sectionHeader: "Categories")
+│                   │   ├── Text("Categories", fontSize: 17, fontWeight: bold)
+│                   │   └── GestureDetector (onTap -&gt; JewelleryScreen)
+│                   │       └── Text("View All", color: #3B2E9B)
+│                   ├── SizedBox (height: 16)
+│                   ├── Row (Categories Badges: spaceBetween)
+│                   │   ├── _CategoryItem ("Rings", Icons.circle_outlined)
+│                   │   │   └── Column
+│                   │   │       ├── Container (circle 64x64, border) -&gt; Icon(Icons.circle_outlined)
+│                   │   │       ├── SizedBox (height: 8)
+│                   │   │       └── Text("Rings")
+│                   │   ├── _CategoryItem ("Necklaces", Icons.abc)
+│                   │   ├── _CategoryItem ("Earrings", Icons.hearing)
+│                   │   └── _CategoryItem ("Bracelets", Icons.circle)
+│                   ├── SizedBox (height: 28)
+│                   ├── Row (_sectionHeader: "New Arrivals")
+│                   │   ├── Text("New Arrivals")
+│                   │   └── GestureDetector (onTap -&gt; JewelleryScreen)
+│                   │       └── Text("View All")
+│                   ├── SizedBox (height: 16)
+│                   ├── SizedBox (height: 220, New Arrivals Carousel)
+│                   │   └── ListView (horizontal, bouncing)
+│                   │       ├── _ProductCard (imagePath: s1, "Gold Necklace", "₹45,999")
+│                   │       │   └── InkWell (onTap -&gt; ProductDetailsScreen)
+│                   │       │       └── Container (width: 160, border: grey.200)
+│                   │       │           └── Column
+│                   │       │               ├── Stack
+│                   │       │               │   ├── ClipRRect -&gt; Container(height: 130) -&gt; Image.asset(s1)
+│                   │       │               │   └── Positioned(top: 8, right: 8) -&gt; Container(circle) -&gt; Icon(favorite_border)
+│                   │       │               └── Padding(10)
+│                   │       │                   └── Column
+│                   │       │                       ├── Text(name)
+│                   │       │                       ├── SizedBox(height: 4)
+│                   │       │                       └── Text(price, color: #3B2E9B)
+│                   │       ├── SizedBox (width: 14)
+│                   │       ├── _ProductCard (imagePath: s2[1], "Diamond Ring", "₹25,999")
+│                   │       ├── SizedBox (width: 14)
+│                   │       └── _ProductCard (imagePath: s2[2], "Emerald Pendant", "₹32,999")
+│                   ├── SizedBox (height: 28)
+│                   ├── Row (_sectionHeader: "Popular Products")
+│                   ├── SizedBox (height: 16)
+│                   ├── SizedBox (height: 220, Popular Products Carousel)
+│                   │   └── ListView (horizontal, bouncing)
+│                   │       ├── _ProductCard (imagePath: s2[3], "Gold Earrings", "₹22,999")
+│                   │       ├── SizedBox (width: 14)
+│                   │       ├── _ProductCard (imagePath: s2[1], "Silver Bracelet", "₹15,999")
+│                   │       ├── SizedBox (width: 14)
+│                   │       └── _ProductCard (imagePath: s2[2], "Rose Gold Ring", "₹18,999")
+│                   └── SizedBox (height: 30)
+└── UserBottomNav (currentIndex: 0) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>08. JewelleryScreen (Catalog / All Jewellery)</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/jewelleryscreen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Full catalog display with 2-column GridView of products, direct search bar, quick filter button, and cart shortcut.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (horizontal: 16, vertical: 12, Top App Bar)
+│       │   └── Row
+│       │       ├── IconButton (Icons.arrow_back_ios_new, onPressed -&gt; pop)
+│       │       ├── Spacer()
+│       │       ├── Text("All Jewellery", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── IconButton (Icons.shopping_cart_outlined, onPressed -&gt; CartScreen)
+│       ├── Padding (horizontal: 16, Search + Filter Area)
+│       │   └── Column
+│       │       ├── Container (Search Bar Box)
+│       │       │   └── TextField (decoration: prefixIcon search, border: none)
+│       │       ├── SizedBox (height: 12)
+│       │       └── Align (alignment: centerRight)
+│       │           └── InkWell (onTap -&gt; SearchFilterScreen)
+│       │               └── Container (border: grey.300, radius: 8)
+│       │                   └── Row
+│       │                       ├── Icon(Icons.tune, size: 16)
+│       │                       ├── SizedBox (width: 6)
+│       │                       └── Text("Filter", fontSize: 13)
+│       ├── SizedBox (height: 16)
+│       └── Expanded (Products Grid)
+│           └── GridView.builder (crossAxisCount: 2, childAspectRatio: 0.78)
+│               └── _ProductCard
+│                   └── InkWell (onTap -&gt; ProductDetailsScreen)
+│                       └── Container (border: grey.200, radius: 12)
+│                           └── Column
+│                               ├── Expanded
+│                               │   └── Stack
+│                               │       ├── ClipRRect -&gt; Container -&gt; Image.asset(image)
+│                               │       └── Positioned (top: 8, right: 8) -&gt; Container(circle) -&gt; Icon(favorite_border)
+│                               └── Padding (10)
+│                                   └── Column
+│                                       ├── Text(name, fontWeight: w600)
+│                                       ├── SizedBox (height: 4)
+│                                       └── Text(price, color: #3B2E9B)
+└── UserBottomNav (currentIndex: 1) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>09. SearchFilterScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/searchfilterscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Filter options dialog with category dropdown, radio options for product status (All, New, Old), and radio options for sorting.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── IconButton (Icons.arrow_back_ios_new, onPressed -&gt; pop)
+│       │       ├── Spacer()
+│       │       ├── Text("Search &amp; Filter", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── GestureDetector (onTap -&gt; reset state)
+│       │           └── Text("Reset", color: #3B2E9B)
+│       └── Expanded
+│           └── SingleChildScrollView (padding: horizontal 16)
+│               └── Column (crossAxisAlignment: start)
+│                   ├── SizedBox (height: 8)
+│                   ├── Container (Search Bar Box)
+│                   │   └── TextField (prefixIcon: search, hint: "Search jewellery...")
+│                   ├── SizedBox (height: 26)
+│                   ├── Text("Filter By", fontSize: 16, fontWeight: bold)
+│                   ├── SizedBox (height: 20)
+│                   ├── Text("Category", fontSize: 14, fontWeight: w600)
+│                   ├── SizedBox (height: 10)
+│                   ├── Container (Dropdown Container, border: grey.300)
+│                   │   └── DropdownButtonHideUnderline
+│                   │       └── DropdownButton&lt;String&gt; (_selectedCategory, items: _categories)
+│                   ├── SizedBox (height: 26)
+│                   ├── Text("Product Type", fontSize: 14, fontWeight: w600)
+│                   ├── SizedBox (height: 6)
+│                   ├── _RadioOption ("All Products")
+│                   ├── _RadioOption ("New Products")
+│                   ├── _RadioOption ("Old Products")
+│                   ├── SizedBox (height: 22)
+│                   ├── Text("Sort By", fontSize: 14, fontWeight: w600)
+│                   ├── SizedBox (height: 6)
+│                   ├── _RadioOption ("Newest First")
+│                   ├── _RadioOption ("Oldest First")
+│                   ├── _RadioOption ("Price: Low to High")
+│                   ├── _RadioOption ("Price: High to Low")
+│                   ├── SizedBox (height: 30)
+│                   ├── SizedBox (height: 52, width: double.infinity)
+│                   │   └── ElevatedButton (onPressed -&gt; pop)
+│                   │       └── Text("Apply Filter")
+│                   └── SizedBox (height: 30)
+└── UserBottomNav (currentIndex: 1) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>10. ProductDetailsScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/productdetailsscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Item details showcase: high resolution asset preview, stock badge, quantity increment/decrement controls, Add to Cart, and Add to Wishlist.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── IconButton (Icons.arrow_back_ios_new, onPressed -&gt; pop)
+│       │       ├── Spacer()
+│       │       └── Icon(Icons.favorite_border, size: 24)
+│       └── Expanded
+│           └── SingleChildScrollView (padding: horizontal 16)
+│               └── Column (crossAxisAlignment: start)
+│                   ├── SizedBox (height: 8)
+│                   ├── Container (Image Display Card, height: 320, color: #F5F5F5)
+│                   │   └── Center
+│                   │       └── Container (inner card 220x220, color: white)
+│                   │           └── Padding (20)
+│                   │               └── Image.asset(s1, fit: contain)
+│                   ├── SizedBox (height: 24)
+│                   ├── Text("Gold Necklace", fontSize: 22, fontWeight: bold)
+│                   ├── SizedBox (height: 8)
+│                   ├── Text("₹45,999", fontSize: 20, fontWeight: bold)
+│                   ├── SizedBox (height: 14)
+│                   ├── Text("Beautiful gold necklace with premium quality.")
+│                   ├── SizedBox (height: 14)
+│                   ├── Text("In Stock", color: Color(0xFF2E7D32), fontWeight: w600)
+│                   ├── SizedBox (height: 24)
+│                   ├── Container (Quantity Counter Box, border: grey.300)
+│                   │   └── Row (mainAxisSize: min)
+│                   │       ├── GestureDetector (onTap: decrement quantity)
+│                   │       │   └── SizedBox (40x40) -&gt; Icon(Icons.remove)
+│                   │       ├── SizedBox (40) -&gt; Center -&gt; Text('$_quantity')
+│                   │       └── GestureDetector (onTap: increment quantity)
+│                   │           └── SizedBox (40x40) -&gt; Icon(Icons.add)
+│                   ├── SizedBox (height: 30)
+│                   ├── SizedBox (height: 52, width: double.infinity)
+│                   │   └── ElevatedButton (onPressed -&gt; CartScreen)
+│                   │       └── Text("Add to Cart")
+│                   ├── SizedBox (height: 14)
+│                   ├── SizedBox (height: 52, width: double.infinity)
+│                   │   └── OutlinedButton (Add to Wishlist, side: #3B2E9B)
+│                   │       └── Row (mainAxisAlignment: center)
+│                   │           ├── Icon(Icons.favorite_border, color: #3B2E9B)
+│                   │           ├── SizedBox (width: 10)
+│                   │           └── Text("Add to Wishlist", color: #3B2E9B)
+│                   └── SizedBox (height: 30)
+└── UserBottomNav (currentIndex: 3) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>11. CartScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/cartscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">User shopping bag showing dynamic item list, quantity counters, delete option, price aggregation, and sticky checkout footer.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("My Cart", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── Icon(Icons.favorite_border)
+│       ├── Expanded (Cart Items List)
+│       │   └── ListView.separated (itemCount: _cartItems.length)
+│       │       └── _CartItemCard
+│       │           └── Container (border: grey.200, radius: 14, padding: 12)
+│       │               └── Row
+│       │                   ├── Container (Image Box 90x90, color: #F5F5F5)
+│       │                   │   └── Image.asset(image)
+│       │                   ├── SizedBox (width: 14)
+│       │                   ├── Expanded (Details Column)
+│       │                   │   └── Column (crossAxisAlignment: start)
+│       │                   │       ├── Text(name, fontSize: 15, fontWeight: bold)
+│       │                   │       ├── SizedBox (height: 4)
+│       │                   │       ├── Text(price, fontSize: 14, fontWeight: bold)
+│       │                   │       ├── SizedBox (height: 10)
+│       │                   │       └── Container (Quantity Stepper Box)
+│       │                   │           └── Row
+│       │                   │               ├── GestureDetector (onTap: onDecrease) -&gt; Icon(remove)
+│       │                   │               ├── SizedBox (30) -&gt; Center -&gt; Text('$qty')
+│       │                   │               └── GestureDetector (onTap: onIncrease) -&gt; Icon(add)
+│       │                   └── GestureDetector (onTap: onDelete)
+│       │                       └── Icon(Icons.delete_outline, size: 26, color: #D32F2F)
+│       └── Container (Checkout Summary Bottom Sheet, elevation shadow)
+│           └── Column
+│               ├── Row (mainAxisAlignment: spaceBetween)
+│               │   ├── Text("Total Items (2)", color: #757575)
+│               │   └── Text("₹68,998", fontSize: 20, fontWeight: bold)
+│               ├── SizedBox (height: 16)
+│               └── SizedBox (height: 52, width: double.infinity)
+│                   └── ElevatedButton (onPressed -&gt; CheckoutScreen)
+│                       └── Text("Proceed to Checkout")
+└── UserBottomNav (currentIndex: 3) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>12. CheckoutScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/checkoutscreen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Order placement overview including delivery address card, item breakdown, dashed total line, and payment progression button.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── IconButton (Icons.arrow_back_ios_new, onPressed -&gt; pop)
+│       │       ├── Spacer()
+│       │       ├── Text("Place Order", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 48)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 16)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 8)
+│       │           ├── Text("Delivery Address", fontSize: 16, fontWeight: bold)
+│       │           ├── SizedBox (height: 12)
+│       │           ├── Container (Address Card, border: grey.300, radius: 12)
+│       │           │   └── Row (crossAxisAlignment: start)
+│       │           │       ├── Expanded (Address Details)
+│       │           │       │   └── Column (crossAxisAlignment: start)
+│       │           │       │       ├── Text("Arjun", fontWeight: bold)
+│       │           │       │       ├── SizedBox (height: 6)
+│       │           │       │       ├── Text("123, Green Street,\nMumbai - 400001")
+│       │           │       │       ├── SizedBox (height: 6)
+│       │           │       │       └── Text("+91 9876543210")
+│       │           │       └── GestureDetector (onTap: change address)
+│       │           │           └── Text("Change", color: #3B2E9B, fontWeight: bold)
+│       │           ├── SizedBox (height: 26)
+│       │           ├── Text("Order Summary", fontSize: 16, fontWeight: bold)
+│       │           ├── SizedBox (height: 12)
+│       │           ├── Container (Order Summary Card, border: grey.300, radius: 12)
+│       │           │   └── Column
+│       │           │       ├── _summaryRow ("Items (2)", "₹68,998")
+│       │           │       ├── SizedBox (height: 14)
+│       │           │       ├── _summaryRow ("Delivery Charge", "FREE", valueColor: green)
+│       │           │       ├── SizedBox (height: 14)
+│       │           │       ├── DashedLine (Custom 40-segment dashed separator)
+│       │           │       ├── SizedBox (height: 14)
+│       │           │       └── _summaryRow ("Total Amount", "₹68,998", bold: true)
+│       │           └── SizedBox (height: 30)
+│       └── Container (Bottom Payment Action Bar)
+│           └── SizedBox (height: 52, width: double.infinity)
+│               └── ElevatedButton (onPressed -&gt; PaymentScreen)
+│                   └── Text("Continue to Payment")
+└── UserBottomNav (currentIndex: 3) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>13. PaymentScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/paymentscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Payment gateway selection supporting Cash on Delivery and UPI with active selection indicators.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Payment", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 16)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 8)
+│       │           ├── Container (Total Card, color: #F5F5F5)
+│       │           │   └── Row (mainAxisAlignment: spaceBetween)
+│       │           │       ├── Text("Total Amount", fontWeight: bold)
+│       │           │       └── Text("₹68,998", fontSize: 18, fontWeight: bold)
+│       │           ├── SizedBox (height: 28)
+│       │           ├── Text("Select Payment Method", fontSize: 16, fontWeight: bold)
+│       │           ├── SizedBox (height: 16)
+│       │           ├── _PaymentOption ("Cash on Delivery", icon: Icons.payments_outlined)
+│       │           │   └── GestureDetector -&gt; AnimatedContainer
+│       │           │       └── Row
+│       │           │           ├── Container (leading icon box) -&gt; Icon(Icons.payments_outlined)
+│       │           │           ├── SizedBox (width: 14)
+│       │           │           ├── Expanded -&gt; Column -&gt; Text("Cash on Delivery")
+│       │           │           └── Container (Selection Indicator circle with Icon(check))
+│       │           ├── SizedBox (height: 14)
+│       │           ├── _PaymentOption ("UPI", subtitle: "Pay using any UPI App")
+│       │           └── SizedBox (height: 30)
+│       └── Container (Place Order Bottom Bar)
+│           └── SizedBox (height: 52, width: double.infinity)
+│               └── ElevatedButton (onPressed -&gt; pushReplacement OrderHistoryScreen)
+│                   └── Text("Place Order")
+└── UserBottomNav (currentIndex: 3) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>14. OrderHistoryScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/orderhistoryscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">User purchase logs with filter pills ('All', 'Processing', 'Delivered'), dynamic status chips, and contextual actions.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Order History", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── Icon(Icons.search)
+│       ├── SizedBox (height: 8)
+│       ├── Padding (horizontal: 16, Tab Chips Row)
+│       │   └── Row
+│       │       └── _tabs.map (All, Processing, Delivered)
+│       │           └── GestureDetector (onTap: switch tab)
+│       │               └── AnimatedContainer (border, radius: 20, active color: #3B2E9B)
+│       │                   └── Text(tab)
+│       ├── SizedBox (height: 20)
+│       └── Expanded (Orders List)
+│           └── ListView.separated (itemCount: _orders.length)
+│               └── _OrderCard
+│                   └── Container (border: grey.200, radius: 14, padding: 16)
+│                       └── Column (crossAxisAlignment: start)
+│                           ├── Row (Order ID + Dynamic Status Chip)
+│                           │   ├── Expanded
+│                           │   │   └── Column
+│                           │   │       ├── Text('Order $orderId', fontWeight: bold)
+│                           │   │       ├── SizedBox (height: 4)
+│                           │   │       └── Text(date, color: grey.600)
+│                           │   └── Container (Status Badge: Processing/Delivered/Cancelled)
+│                           │       └── Text(status)
+│                           ├── SizedBox (height: 16)
+│                           └── Row (Items + Amount + Outlined Action Button)
+│                               ├── Expanded
+│                               │   └── Column
+│                               │       ├── Text(items)
+│                               │       ├── SizedBox (height: 4)
+│                               │       └── Text(amount, fontWeight: bold)
+│                               └── OutlinedButton (side: #3B2E9B)
+│                                   └── Text(buttonText: 'Track Order'/'Reorder'/'Details')
+└── UserBottomNav (currentIndex: 3) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>15. ProfileScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/profilescreen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">User account overview with avatar, order navigation, wishlist link, edit profile, and red Logout button.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top Bar)
+│       │   └── Row (mainAxisAlignment: center)
+│       │       └── Text("My Profile", fontSize: 17, fontWeight: bold)
+│       └── Expanded
+│           └── SingleChildScrollView (padding: horizontal 20)
+│               └── Column
+│                   ├── SizedBox (height: 30)
+│                   ├── Container (Avatar circle 110x110, color: #EBE4F7)
+│                   │   └── Icon(Icons.person, size: 60, color: #3B2E9B)
+│                   ├── SizedBox (height: 20)
+│                   ├── Text("NAME", fontSize: 18, fontWeight: bold)
+│                   ├── SizedBox (height: 50)
+│                   ├── _menuItem ("My Orders" -&gt; OrderHistoryScreen)
+│                   │   └── GestureDetector -&gt; Row
+│                   │       ├── Expanded -&gt; Text("My Orders")
+│                   │       └── Icon(Icons.arrow_forward_ios, size: 16)
+│                   ├── Divider (height: 1, color: #EEEEEE)
+│                   ├── _menuItem ("My Wishlist" -&gt; WishlistScreen)
+│                   ├── Divider (height: 1, color: #EEEEEE)
+│                   ├── _menuItem ("Edit profile")
+│                   ├── SizedBox (height: 120)
+│                   ├── SizedBox (height: 52, width: double.infinity)
+│                   │   └── ElevatedButton (onPressed -&gt; pushAndRemoveUntil LoginScreen, color: #E53935)
+│                   │       └── Row (mainAxisAlignment: center)
+│                   │           ├── Icon(Icons.logout, size: 20, color: white)
+│                   │           ├── SizedBox (width: 10)
+│                   │           └── Text("Log Out", color: white)
+│                   └── SizedBox (height: 30)
+└── UserBottomNav (currentIndex: 4) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>16. WishlistScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/wishlistscreen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Saved items list with empty state placeholder and persistent bottom navigation.</p>
+  <pre><code>Scaffold
+├── AppBar (title: Text("My Wishlist"), centerTitle: true)
+├── Center (body)
+│   └── Column (mainAxisSize: min)
+│       ├── Icon(Icons.favorite_border, size: 56, color: #3B2E9B)
+│       ├── SizedBox (height: 12)
+│       └── Text("Your wishlist is empty.")
+└── UserBottomNav (currentIndex: 2) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>17. TermsScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/screens/tearmscreen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">User Experience Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Terms of Service and legal agreements viewer with card layout and Accept / Decline choices.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea (body)
+    └── SingleChildScrollView (padding: horizontal 28)
+        └── Column (crossAxisAlignment: stretch)
+            ├── SizedBox (height: 20)
+            ├── Align (alignment: centerLeft)
+            │   └── GestureDetector (onTap -&gt; pop)
+            │       └── Container (circle background)
+            │           └── Icon(Icons.arrow_back_ios_new, color: #3B2E9B)
+            ├── SizedBox (height: 40)
+            ├── Text("TERMS OF SERVICE", fontSize: 30, color: #3B2E9B, fontWeight: bold)
+            ├── SizedBox (height: 50)
+            ├── Container (Terms Content Card, border: grey.300, radius: 14, padding: 20)
+            │   └── Column (crossAxisAlignment: start)
+            │       ├── Text("1. Acceptance of Terms", fontWeight: bold)
+            │       ├── SizedBox (height: 8)
+            │       ├── Text("By accessing and using this application, you accept...")
+            │       ├── SizedBox (height: 22)
+            │       ├── Text("2. Privacy Policy", fontWeight: bold)
+            │       ├── SizedBox (height: 8)
+            │       ├── Text("Your use of our service is also subject to our Privacy Policy...")
+            │       ├── SizedBox (height: 22)
+            │       ├── Text("3. User Accounts", fontWeight: bold)
+            │       ├── SizedBox (height: 8)
+            │       └── Text("When you create an account with us, you must provide...")
+            ├── SizedBox (height: 130)
+            ├── SizedBox (height: 52)
+            │   └── ElevatedButton (onPressed -&gt; pop)
+            │       └── Text("Accept &amp; Continue")
+            ├── SizedBox (height: 18)
+            ├── Center
+            │   └── Text("Decline", color: grey.700)
+            └── SizedBox (height: 40)</code></pre>
+</div>
+
+<h2>Admin Portal Screens</h2>
+
+<div style="margin-bottom: 30px;">
+  <h3>18. AdminDashboardScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/admin_dashboard_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Administrator control panel overview with summary metrics (Total Orders, Active Users, Total Products) and real-time Recent Orders list.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Text("DASHBOARD", fontSize: 20, color: #3B2E9B, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── Stack (Notification Bell with Red Unread Dot)
+│       │           ├── Icon(Icons.notifications_none, size: 26)
+│       │           └── Positioned (top: 2, right: 2) -&gt; Container (red 8x8 circle)
+│       └── Expanded
+│           └── SingleChildScrollView (padding: horizontal 20)
+│               └── Column (crossAxisAlignment: start)
+│                   ├── SizedBox (height: 8)
+│                   ├── Row (Stats Row 1)
+│                   │   ├── Expanded -&gt; _StatCard (label: "Total Orders", value: "342")
+│                   │   ├── SizedBox (width: 14)
+│                   │   └── Expanded -&gt; _StatCard (label: "Active Users", value: "1,204")
+│                   ├── SizedBox (height: 14)
+│                   ├── Row (Stats Row 2)
+│                   │   ├── Expanded -&gt; _StatCard (label: "Total Products", value: "86")
+│                   │   ├── SizedBox (width: 14)
+│                   │   └── Expanded -&gt; SizedBox() (empty spacer)
+│                   ├── SizedBox (height: 34)
+│                   ├── Row (Recent Orders Header: spaceBetween)
+│                   │   ├── Text("Recent Orders", fontSize: 16, fontWeight: bold)
+│                   │   └── Text("View All", fontSize: 14, color: #3B2E9B, fontWeight: bold)
+│                   ├── SizedBox (height: 16)
+│                   ├── _RecentOrderTile (Order 1: New, Initial 'S', #ORD-88231)
+│                   │   └── Container (border: grey.200, radius: 14, padding: 14)
+│                   │       └── Row
+│                   │           ├── Container (Avatar circle with initial 'S')
+│                   │           ├── SizedBox (width: 14)
+│                   │           ├── Expanded -&gt; Column -&gt; Text(orderId) + Text(subtitle)
+│                   │           └── Container (Status Badge: "New", color: orange)
+│                   ├── SizedBox (height: 12)
+│                   ├── _RecentOrderTile (Order 2: Processing, Initial 'J', #ORD-88230)
+│                   ├── SizedBox (height: 12)
+│                   ├── _RecentOrderTile (Order 3: Delivered, Initial 'R', #ORD-88229)
+│                   └── SizedBox (height: 30)
+└── AdminBottomNav (currentIndex: 0) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>19. AdminProductsScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/admin_products_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Product management table with items, pricing, live stock numbers, inline Edit & Delete triggers, plus Floating Action Button to add inventory.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Products", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       └── Expanded (Products ListView)
+│           └── ListView.separated (itemCount: products.length)
+│               └── _ProductTile
+│                   └── Container (border: grey.200, radius: 14, padding: 14)
+│                       └── Row
+│                           ├── Container (Thumbnail Box 80x80, color: #F5F5F5) -&gt; Icon(icon)
+│                           ├── SizedBox (width: 14)
+│                           └── Expanded
+│                               └── Column (crossAxisAlignment: start)
+│                                   ├── Text(name, fontSize: 15, fontWeight: bold)
+│                                   ├── SizedBox (height: 4)
+│                                   ├── Text(price, fontSize: 14, fontWeight: bold)
+│                                   ├── SizedBox (height: 4)
+│                                   ├── Text("Stock: $stock", fontSize: 12)
+│                                   ├── SizedBox (height: 12)
+│                                   └── Row (Inline Action Buttons)
+│                                       ├── _actionButton ("Edit" -&gt; EditProductScreen, bg: #EBE4F7)
+│                                       ├── SizedBox (width: 8)
+│                                       └── _actionButton ("Delete" -&gt; DeleteProductScreen, bg: #FFEBEE)
+├── FloatingActionButton (onPressed -&gt; AddProductScreen, backgroundColor: #3B2E9B)
+│   └── Icon(Icons.add, color: white, size: 32)
+└── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>20. AddProductScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/add_product_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Product creation portal with custom dashed border image upload box, name, category picker, side-by-side price/stock fields, and description text area.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Add New Jewellery", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 20)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 4)
+│       │           ├── CustomPaint (_DashedBorderPainter)
+│       │           │   └── Container (Upload Image Box, color: #F5F5F5, padding: 34 vertical)
+│       │           │       └── Column
+│       │           │           ├── Icon(Icons.photo_camera_outlined, size: 40)
+│       │           │           ├── SizedBox (height: 12)
+│       │           │           ├── Text("Click to Upload Image", fontWeight: bold)
+│       │           │           └── Text("PNG, JPG up to 5MB", color: grey.600)
+│       │           ├── SizedBox (height: 28)
+│       │           ├── Text("Product Name")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_productNameController, hint: "e.g., Diamond Solitaire Ring")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Category")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── Container (Dropdown Box, border: grey.300)
+│       │           │   └── DropdownButtonHideUnderline
+│       │           │       └── DropdownButton&lt;String&gt; (_selectedCategory, items: _categories)
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Row (Price + Stock Row)
+│       │           │   ├── Expanded (Price Column)
+│       │           │   │   └── Column
+│       │           │   │       ├── Text("Price")
+│       │           │   │       ├── SizedBox (height: 10)
+│       │           │   │       └── TextField (_priceController, prefixIcon: Text('₹'))
+│       │           │   ├── SizedBox (width: 14)
+│       │           │   └── Expanded (Stock Column)
+│       │           │       └── Column
+│       │           │           ├── Text("Stock Quantity")
+│       │           │           ├── SizedBox (height: 10)
+│       │           │           └── TextField (_stockController, hint: "e.g., 50")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Description")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_descriptionController, maxLines: 5)
+│       │           └── SizedBox (height: 30)
+│       └── Container (Sticky Save Footer)
+│           └── SizedBox (height: 52, width: double.infinity)
+│               └── ElevatedButton (onPressed: save)
+│                   └── Text("Save Product")
+└── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>21. EditProductScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/edit_product_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Product editor pre-populated with active inventory metadata, image replacement badge, Update Product button, and red Delete action.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Edit Jewellery", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 20)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 4)
+│       │           ├── Stack (Image Preview + Floating Change Badge)
+│       │           │   ├── Container (height: 150, color: #F5F5F5)
+│       │           │   │   └── Center -&gt; Container(110x110) -&gt; Image.asset(s1)
+│       │           │   └── Positioned (bottom: -6, right: -6)
+│       │           │       └── Container (circle 38x38, color: #3B2E9B)
+│       │           │           └── Icon(Icons.add, color: white)
+│       │           ├── SizedBox (height: 28)
+│       │           ├── Text("Product Name")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_productNameController, prefilled: "Gold Necklace")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Category")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── Container (Dropdown Box) -&gt; DropdownButton&lt;String&gt; ("Necklaces")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Row (Price + Stock Row)
+│       │           │   ├── Expanded -&gt; Column -&gt; Text("Price") + TextField ("45,999")
+│       │           │   ├── SizedBox (width: 14)
+│       │           │   └── Expanded -&gt; Column -&gt; Text("Stock Quantity") + TextField ("12")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Description")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_descriptionController, maxLines: 4)
+│       │           └── SizedBox (height: 30)
+│       └── Container (Footer Actions)
+│           └── Column
+│               ├── SizedBox (height: 52, width: double.infinity)
+│               │   └── ElevatedButton (onPressed: update)
+│               │       └── Text("Update Product")
+│               ├── SizedBox (height: 12)
+│               └── GestureDetector (onTap: delete)
+│                   └── Text("Delete Product", color: #E53935, fontWeight: bold)
+└── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>22. DeleteProductScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/delete_product_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Product deletion confirmation modal screen with trash icon badge, item name confirmation, and Cancel / Yes Delete buttons.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Center
+│       └── Padding (horizontal: 28)
+│           └── Column (mainAxisSize: min)
+│               ├── Container (Trash Icon Circle 80x80, color: #FFEBEE)
+│               │   └── Icon(Icons.delete_outline, size: 40, color: #E53935)
+│               ├── SizedBox (height: 26)
+│               ├── Text("Delete Product?", fontSize: 20, fontWeight: bold)
+│               ├── SizedBox (height: 14)
+│               ├── Text("Are you sure you want to delete", color: grey.600)
+│               ├── SizedBox (height: 2)
+│               ├── Text('"Gold Necklace"', fontWeight: bold)
+│               ├── SizedBox (height: 8)
+│               ├── Text("This action cannot be undone.", color: #E53935, fontWeight: w600)
+│               ├── SizedBox (height: 30)
+│               └── Row (Decision Row)
+│                   ├── Expanded
+│                   │   └── SizedBox (height: 48)
+│                   │       └── OutlinedButton (onPressed -&gt; pop)
+│                   │           └── Text("Cancel")
+│                   ├── SizedBox (width: 12)
+│                   └── Expanded
+│                       └── SizedBox (height: 48)
+│                           └── ElevatedButton (color: #E53935)
+│                               └── Text("Yes, Delete", color: white)
+└── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>23. ManageCategoriesScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/manage_categories_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Overview of all store departments with product quantities per category, inline Edit/Delete buttons, and bottom 'Add New Category' CTA.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Manage Categories", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded (Categories List)
+│       │   └── ListView.separated (itemCount: categories.length)
+│       │       └── _CategoryTile
+│       │           └── Container (border: grey.200, radius: 14, padding: 12)
+│       │               └── Row
+│       │                   ├── Container (Icon Box 56x56, color: iconBg) -&gt; Icon(icon, color: iconColor)
+│       │                   ├── SizedBox (width: 14)
+│       │                   ├── Expanded
+│       │                   │   └── Column (crossAxisAlignment: start)
+│       │                   │       ├── Text(name, fontSize: 15, fontWeight: bold)
+│       │                   │       ├── SizedBox (height: 4)
+│       │                   │       └── Text('$count Products', color: grey.600)
+│       │                   ├── InkWell (onTap -&gt; EditCategoryScreen)
+│       │                   │   └── Container (36x36, color: #F5F5F5)
+│       │                   │       └── Icon(Icons.edit_outlined, size: 18)
+│       │                   ├── SizedBox (width: 8)
+│       │                   └── Container (36x36, color: #FFEBEE)
+│       │                       └── Icon(Icons.delete_outline, size: 18, color: #E53935)
+│       └── Container (Add New Category Footer)
+│           └── SizedBox (height: 52, width: double.infinity)
+│               └── ElevatedButton (onPressed -&gt; AddCategoryScreen)
+│                   └── Row (mainAxisAlignment: center)
+│                       ├── Icon(Icons.add, color: white)
+│                       ├── SizedBox (width: 8)
+│                       └── Text("Add New Category")
+└── AdminBottomNav (currentIndex: 2) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>24. AddCategoryScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/add_category_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Category creation page with dashed icon upload area, title, color theme selector, and detailed description field.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Add Category", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 20)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 4)
+│       │           ├── CustomPaint (_DashedBorderPainter)
+│       │           │   └── Container (Upload Icon Box, color: #F5F5F5, padding: 32 vertical)
+│       │           │       └── Column
+│       │           │           ├── Icon(Icons.add_photo_alternate_outlined, size: 40)
+│       │           │           ├── SizedBox (height: 12)
+│       │           │           ├── Text("Upload Category Icon", fontWeight: bold)
+│       │           │           └── Text("PNG, JPG up to 2MB", color: grey.600)
+│       │           ├── SizedBox (height: 28)
+│       │           ├── Text("Category Name")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_categoryNameController, hint: "e.g., Rings")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Category Color")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── Container (Dropdown Box)
+│       │           │   └── DropdownButton&lt;String&gt; ('Purple', 'Blue', 'Green', 'Orange')
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Description")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_descriptionController, maxLines: 4)
+│       │           └── SizedBox (height: 30)
+│       └── Container (Save Category Footer)
+│           └── SizedBox (height: 52, width: double.infinity)
+│               └── ElevatedButton (onPressed: save)
+│                   └── Text("Save Category")
+└── AdminBottomNav (currentIndex: 2) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>25. EditCategoryScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/edit_category_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Category editor prefilled with existing category credentials, icon update button, Update Category button, and Delete Category link.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Edit Category", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 20)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 4)
+│       │           ├── Stack (Current Icon Preview + Add Badge)
+│       │           │   ├── Container (height: 150, color: #F5F5F5)
+│       │           │   │   └── Center -&gt; Container(100x100, color: #F3E5F5) -&gt; Icon(Icons.abc, color: #8E24AA)
+│       │           │   └── Positioned (bottom: -6, right: -6)
+│       │           │       └── Container (circle 38x38, color: #3B2E9B) -&gt; Icon(Icons.add, color: white)
+│       │           ├── SizedBox (height: 28)
+│       │           ├── Text("Category Name")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_categoryNameController, prefilled: "Necklaces")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Category Color")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── Container (Dropdown Box) -&gt; DropdownButton&lt;String&gt; ("Purple")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Description")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_descriptionController, maxLines: 4)
+│       │           └── SizedBox (height: 30)
+│       └── Container (Footer Actions)
+│           └── Column
+│               ├── SizedBox (height: 52, width: double.infinity)
+│               │   └── ElevatedButton (onPressed: update)
+│               │       └── Text("Update Category")
+│               ├── SizedBox (height: 12)
+│               └── GestureDetector (onTap: delete)
+│                   └── Text("Delete Category", color: #E53935, fontWeight: bold)
+└── AdminBottomNav (currentIndex: 2) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>26. ManageOrdersScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/manage_orders_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Comprehensive admin order processing log displaying customer names, item count, totals, status badges, and 'Update Status' triggers.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Manage Oder", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       └── Expanded (Orders List)
+│           └── ListView.separated (itemCount: orders.length)
+│               └── _OrderCard
+│                   └── Container (border: grey.200, radius: 14, padding: 16)
+│                       └── Column (crossAxisAlignment: start)
+│                           ├── Row (Order ID + Status Badge)
+│                           │   ├── Expanded
+│                           │   │   └── Column
+│                           │   │       ├── Text(orderId, fontSize: 15, fontWeight: bold)
+│                           │   │       ├── SizedBox (height: 4)
+│                           │   │       └── Text('$customer  •  $items Items', color: grey.600)
+│                           │   └── Container (Status Chip: New / Processing / Delivered)
+│                           │       └── Text(status)
+│                           ├── SizedBox (height: 18)
+│                           └── Row (crossAxisAlignment: end)
+│                               ├── Column (Date)
+│                               │   ├── Text('Date', fontSize: 11)
+│                               │   └── Text(date, fontWeight: bold)
+│                               ├── SizedBox (width: 36)
+│                               ├── Column (Total Amount)
+│                               │   ├── Text('Total Amount', fontSize: 11)
+│                               │   └── Text(amount, fontWeight: bold, color: #3B2E9B)
+│                               ├── Spacer()
+│                               └── ElevatedButton (onPressed -&gt; UpdateOrderStatusScreen)
+│                                   └── Text(buttonText: 'Update Status' / 'View Details')
+└── AdminBottomNav (currentIndex: 3) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>27. UpdateOrderStatusScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/update_order_status_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Order progression stepper (New -> Processing -> Shipped -> Delivered) with interactive radio-selection step cards.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea (body)
+    └── Column
+        ├── Padding (Top App Bar)
+        │   └── Row
+        │       ├── Icon(Icons.arrow_back_ios_new)
+        │       ├── Spacer()
+        │       ├── Column (center alignment)
+        │       │   ├── Text("Update Order Status", fontSize: 17, fontWeight: bold)
+        │       │   ├── SizedBox (height: 4)
+        │       │   └── Text("Order #ORD-88231", color: grey.600)
+        │       ├── Spacer()
+        │       └── SizedBox (width: 20)
+        ├── SizedBox (height: 20)
+        ├── Expanded (Steps List)
+        │   └── ListView.builder (_steps: ['New', 'Processing', 'Shipped', 'Delivered'])
+        │       └── GestureDetector (onTap: select step)
+        │           └── Container (margin: 6 bottom, padding: 14x16, active color: #F3F0FC)
+        │               └── Row
+        │                   ├── Container (Radio Circle indicator with white dot when active)
+        │                   ├── SizedBox (width: 16)
+        │                   ├── Expanded -&gt; Text(_steps[index], fontWeight: bold when active)
+        │                   └── Container (Step Badge: "Step 1", "Step 2", etc., color: orange)
+        │                       └── Text('Step ${index + 1}')
+        └── Container (Confirm Update Footer)
+            └── SizedBox (height: 52, width: double.infinity)
+                └── ElevatedButton (onPressed: confirm)
+                    └── Text("Confirm Update")</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>28. ManageUsersScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/manage_users_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">User account management list featuring name/email search, initial letter badges, role indicators ('Admin' / 'User'), and FAB to register users.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Manage Users", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Padding (horizontal: 16, Search Bar Box)
+│       │   └── Container (color: #F5F5F5, radius: 10)
+│       │       └── TextField (prefixIcon: search, hint: "Search by name or email...")
+│       ├── SizedBox (height: 16)
+│       └── Expanded (User Accounts List)
+│           └── ListView.separated (itemCount: users.length)
+│               └── _UserTile
+│                   └── Container (border: grey.200, radius: 14, padding: 14)
+│                       └── Row
+│                           ├── Container (Avatar circle 44x44, color: avatarBg) -&gt; Text(initial)
+│                           ├── SizedBox (width: 14)
+│                           ├── Expanded
+│                           │   └── Column (crossAxisAlignment: start)
+│                           │       ├── Text(name, fontSize: 14, fontWeight: bold)
+│                           │       ├── SizedBox (height: 3)
+│                           │       └── Text(email, color: grey.600)
+│                           ├── SizedBox (width: 8)
+│                           ├── Container (Role Chip: Admin=#F3E5F5, User=#E8F5E9)
+│                           │   └── Text(role)
+│                           ├── SizedBox (width: 6)
+│                           └── Icon(Icons.more_vert, size: 20, color: grey)
+├── FloatingActionButton (onPressed -&gt; AddUserScreen, backgroundColor: #3B2E9B)
+│   └── Icon(Icons.add, color: white, size: 30)
+└── AdminBottomNav (currentIndex: 4) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>29. AddUserScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/add_user_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">New user creation portal with photo placeholder, full name, email, phone, role dropdown ('User' / 'Admin'), and password inputs.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Add User", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       ├── Expanded
+│       │   └── SingleChildScrollView (padding: horizontal 20)
+│       │       └── Column (crossAxisAlignment: start)
+│       │           ├── SizedBox (height: 4)
+│       │           ├── Center
+│       │           │   └── CustomPaint (_DashedBorderPainter)
+│       │           │       └── Container (Profile Photo Circle 120x120, color: #F5F5F5)
+│       │           │           └── Column (mainAxisAlignment: center)
+│       │           │               ├── Icon(Icons.person_add_alt_1_outlined, size: 32)
+│       │           │               ├── SizedBox (height: 6)
+│       │           │               └── Text("Add Photo", fontSize: 11)
+│       │           ├── SizedBox (height: 30)
+│       │           ├── Text("Full Name")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_nameController, hint: "e.g., John Doe")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Email Address")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_emailController, hint: "e.g., john@example.com")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Phone Number")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_phoneController, hint: "e.g., +91 98765 43210")
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Role")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── Container (Dropdown Box)
+│       │           │   └── DropdownButton&lt;String&gt; (_selectedRole, items: ['User', 'Admin'])
+│       │           ├── SizedBox (height: 20)
+│       │           ├── Text("Password")
+│       │           ├── SizedBox (height: 10)
+│       │           ├── TextField (_passwordController, obscureText: true)
+│       │           └── SizedBox (height: 30)
+│       └── Container (Save User Footer)
+│           └── SizedBox (height: 52, width: double.infinity)
+│               └── ElevatedButton (onPressed: save)
+│                   └── Text("Save User")
+└── AdminBottomNav (currentIndex: 4) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>30. AdminProfileScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/admin_profile_screen.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Administrator profile hub with 'Super Admin' badge, shortcuts to Orders, Products, Edit Profile, and Logout.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+├── SafeArea (body)
+│   └── Column
+│       ├── Padding (Top App Bar)
+│       │   └── Row
+│       │       ├── Icon(Icons.arrow_back_ios_new)
+│       │       ├── Spacer()
+│       │       ├── Text("Admin Profile", fontSize: 17, fontWeight: bold)
+│       │       ├── Spacer()
+│       │       └── SizedBox (width: 20)
+│       └── Expanded
+│           └── SingleChildScrollView (padding: horizontal 20)
+│               └── Column
+│                   ├── SizedBox (height: 20)
+│                   ├── Container (Avatar Circle 100x100, color: #EBE4F7)
+│                   │   └── Text("A", fontSize: 44, fontWeight: bold, color: #3B2E9B)
+│                   ├── SizedBox (height: 16)
+│                   ├── Text("Admin", fontSize: 20, fontWeight: bold)
+│                   ├── SizedBox (height: 10)
+│                   ├── Container (Role Chip: "Super Admin", color: #EBE4F7)
+│                   │   └── Text("Super Admin", color: #3B2E9B)
+│                   ├── SizedBox (height: 60)
+│                   ├── Container (Menu Card, border: grey.200, radius: 14)
+│                   │   └── Column
+│                   │       ├── _menuItem (icon: inventory_2, "Orders" -&gt; ManageOrdersScreen)
+│                   │       ├── Divider()
+│                   │       ├── _menuItem (icon: local_offer, "Products" -&gt; AdminProductsScreen)
+│                   │       ├── Divider()
+│                   │       └── _menuItem (icon: person, "Edit Profile" -&gt; EditProfileScreen)
+│                   ├── SizedBox (height: 80)
+│                   ├── SizedBox (height: 52, width: double.infinity)
+│                   │   └── ElevatedButton (onPressed: logout, color: #E53935)
+│                   │       └── Row (mainAxisAlignment: center)
+│                   │           ├── Icon(Icons.logout, size: 20, color: white)
+│                   │           ├── SizedBox (width: 10)
+│                   │           └── Text("Log Out", color: white)
+│                   └── SizedBox (height: 30)
+└── AdminBottomNav (currentIndex: 5) (bottomNavigationBar)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>31. EditProfileScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/admin_screen/edit_profile_screen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Admin Portal Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Admin profile modifier with camera change badge, name, locked email input, and dual password inputs with visibility toggles.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea (body)
+    └── Column
+        ├── Padding (Top App Bar)
+        │   └── Row
+        │       ├── Icon(Icons.arrow_back_ios_new)
+        │       ├── Spacer()
+        │       ├── Text("Edit Profile", fontSize: 17, fontWeight: bold)
+        │       ├── Spacer()
+        │       └── SizedBox (width: 20)
+        └── Expanded
+            └── SingleChildScrollView (padding: horizontal 20)
+                └── Column (crossAxisAlignment: start)
+                    ├── SizedBox (height: 10)
+                    ├── Center
+                    │   └── Stack
+                    │       ├── Container (Avatar Circle 100x100, color: #EBE4F7) -&gt; Text("A")
+                    │       └── Positioned (bottom: 0, right: 0)
+                    │           └── Container (Camera Badge circle 34x34, color: #3B2E9B)
+                    │               └── Icon(Icons.photo_camera, size: 16, color: white)
+                    ├── SizedBox (height: 36)
+                    ├── Text("Full Name")
+                    ├── SizedBox (height: 10)
+                    ├── TextField (_nameController, prefilled: "vishal sarena")
+                    ├── SizedBox (height: 22)
+                    ├── Text("Email Address")
+                    ├── SizedBox (height: 10)
+                    ├── TextField (_emailController, prefilled: "vsarena@rku.ac.in", suffixIcon: lock_outline)
+                    ├── SizedBox (height: 22)
+                    ├── Text("New Password")
+                    ├── SizedBox (height: 10)
+                    ├── TextField (_newPasswordController, suffixIcon: visibility toggle)
+                    ├── SizedBox (height: 22)
+                    ├── Text("Confirm Password")
+                    ├── SizedBox (height: 10)
+                    ├── TextField (_confirmPasswordController, suffixIcon: visibility toggle)
+                    ├── SizedBox (height: 40)
+                    ├── SizedBox (height: 52, width: double.infinity)
+                    │   └── ElevatedButton (onPressed: save)
+                    │       └── Text("Save Changes")
+                    └── SizedBox (height: 30)</code></pre>
+</div>
+
+<h2>Shared Bottom Navigation Widgets</h2>
+
+<div style="margin-bottom: 30px;">
+  <h3>32. UserBottomNav</h3>
+  <div>
+    <span class="badge file-badge">lib/widgets/user_bottom_nav.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Shared Bottom Navigation Widgets</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">5-tab bottom navigation bar for shoppers: Home (0), Jewellery (1), Wishlist (2), Cart (3), and Profile (4).</p>
+  <pre><code>Container (color: Colors.white, boxShadow: subtle top blur)
+└── SafeArea (top: false)
+    └── Padding (vertical: 8, horizontal: 4)
+        └── Row (mainAxisAlignment: spaceAround)
+            ├── Expanded -&gt; InkWell (index: 0, onTap -&gt; HomeScreen)
+            │   └── Column
+            │       ├── Icon(Icons.home_outlined / Icons.home)
+            │       └── Text("Home")
+            ├── Expanded -&gt; InkWell (index: 1, onTap -&gt; JewelleryScreen)
+            │   └── Column
+            │       ├── Icon(Icons.diamond_outlined / Icons.diamond)
+            │       └── Text("Jewellery")
+            ├── Expanded -&gt; InkWell (index: 2, onTap -&gt; WishlistScreen)
+            │   └── Column
+            │       ├── Icon(Icons.favorite_border / Icons.favorite)
+            │       └── Text("Wishlist")
+            ├── Expanded -&gt; InkWell (index: 3, onTap -&gt; CartScreen)
+            │   └── Column
+            │       ├── Icon(Icons.shopping_cart_outlined / Icons.shopping_cart)
+            │       └── Text("Cart")
+            └── Expanded -&gt; InkWell (index: 4, onTap -&gt; ProfileScreen)
+                └── Column
+                    ├── Icon(Icons.person_outline / Icons.person)
+                    └── Text("Profile")</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>33. AdminBottomNav</h3>
+  <div>
+    <span class="badge file-badge">lib/widgets/admin_bottom_nav.dart</span>
+    <span class="badge">StatelessWidget</span>
+    <span class="badge">Shared Bottom Navigation Widgets</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">6-tab bottom navigation bar for store admins: Dashboard (0), Products (1), Category (2), Orders (3), Users (4), and Profile (5).</p>
+  <pre><code>Container (color: Colors.white, boxShadow: subtle top blur)
+└── SafeArea (top: false)
+    └── Padding (vertical: 8, horizontal: 4)
+        └── Row (mainAxisAlignment: spaceAround)
+            ├── Expanded -&gt; InkWell (index: 0, onTap -&gt; AdminDashboardScreen)
+            │   └── Column
+            │       ├── Icon(Icons.grid_view_outlined / Icons.grid_view)
+            │       └── Text("Dashboard")
+            ├── Expanded -&gt; InkWell (index: 1, onTap -&gt; AdminProductsScreen)
+            │   └── Column
+            │       ├── Icon(Icons.inventory_2_outlined / Icons.inventory_2)
+            │       └── Text("Products")
+            ├── Expanded -&gt; InkWell (index: 2, onTap -&gt; ManageCategoriesScreen)
+            │   └── Column
+            │       ├── Icon(Icons.category_outlined / Icons.category)
+            │       └── Text("Category")
+            ├── Expanded -&gt; InkWell (index: 3, onTap -&gt; ManageOrdersScreen)
+            │   └── Column
+            │       ├── Icon(Icons.receipt_long_outlined / Icons.receipt_long)
+            │       └── Text("Orders")
+            ├── Expanded -&gt; InkWell (index: 4, onTap -&gt; ManageUsersScreen)
+            │   └── Column
+            │       ├── Icon(Icons.person_outline / Icons.person)
+            │       └── Text("Users")
+            └── Expanded -&gt; InkWell (index: 5, onTap -&gt; AdminProfileScreen)
+                └── Column
+                    ├── Icon(Icons.account_circle_outlined / Icons.account_circle)
+                    └── Text("Profile")</code></pre>
+</div>
+
+</div></body></html>
