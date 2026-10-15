@@ -22,7 +22,13 @@ class JewelleryScreen extends StatelessWidget {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      }
+                    },
                     icon: const Icon(Icons.arrow_back_ios_new, size: 20),
                     color: const Color(0xFF1A1A1A),
                   ),
@@ -226,7 +232,7 @@ class _ProductCard extends StatelessWidget {
                     child: Image.asset(
                       imagePath,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => const Icon(
+                      errorBuilder: (context, error, stackTrace) => const Icon(
                         Icons.diamond,
                         size: 40,
                         color: Colors.grey,

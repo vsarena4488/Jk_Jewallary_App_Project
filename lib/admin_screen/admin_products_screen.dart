@@ -44,14 +44,27 @@ class AdminProductsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
-                children: const [
-                  Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 20,
-                    color: Color(0xFF1A1A1A),
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/admin');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20,
+                        color: Color(0xFF1A1A1A),
+                      ),
+                    ),
                   ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     'Products',
                     style: TextStyle(
                       fontSize: 17,
@@ -59,8 +72,8 @@ class AdminProductsScreen extends StatelessWidget {
                       color: Color(0xFF1A1A1A),
                     ),
                   ),
-                  Spacer(),
-                  SizedBox(width: 20), // balance
+                  const Spacer(),
+                  const SizedBox(width: 28), // balance
                 ],
               ),
             ),
@@ -71,7 +84,7 @@ class AdminProductsScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 physics: const BouncingScrollPhysics(),
                 itemCount: products.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 14),
+                separatorBuilder: (context, index) => const SizedBox(height: 14),
                 itemBuilder: (_, index) {
                   final product = products[index];
                   return _ProductTile(

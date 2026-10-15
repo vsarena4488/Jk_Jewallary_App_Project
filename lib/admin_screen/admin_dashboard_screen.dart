@@ -48,6 +48,49 @@ class AdminDashboardScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(width: 14),
+                  // Log Out Button
+                  IconButton(
+                    tooltip: 'Log Out',
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: const Text('Log Out'),
+                          content: const Text(
+                              'Are you sure you want to log out from admin?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(ctx),
+                              child: const Text('Cancel'),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFFE53935),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(ctx);
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  '/login',
+                                  (route) => false,
+                                );
+                              },
+                              child: const Text('Log Out',
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.logout,
+                      size: 24,
+                      color: Color(0xFFE53935),
+                    ),
+                  ),
                 ],
               ),
             ),

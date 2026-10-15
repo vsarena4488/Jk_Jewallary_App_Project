@@ -39,11 +39,24 @@ class _AddUserScreenState extends State<AddUserScreen> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
-                children: const [
-                  Icon(Icons.arrow_back_ios_new,
-                      size: 20, color: Color(0xFF1A1A1A)),
-                  Spacer(),
-                  Text(
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/admin/users');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(Icons.arrow_back_ios_new,
+                          size: 20, color: Color(0xFF1A1A1A)),
+                    ),
+                  ),
+                  const Spacer(),
+                  const Text(
                     'Add User',
                     style: TextStyle(
                       fontSize: 17,
@@ -51,8 +64,8 @@ class _AddUserScreenState extends State<AddUserScreen> {
                       color: Color(0xFF1A1A1A),
                     ),
                   ),
-                  Spacer(),
-                  SizedBox(width: 20), // balance
+                  const Spacer(),
+                  const SizedBox(width: 28), // balance
                 ],
               ),
             ),
@@ -228,7 +241,13 @@ class _AddUserScreenState extends State<AddUserScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    } else {
+                      Navigator.pushReplacementNamed(context, '/admin/users');
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

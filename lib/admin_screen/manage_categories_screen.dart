@@ -50,14 +50,27 @@ class ManageCategoriesScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
-                children: const [
-                  Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 20,
-                    color: Color(0xFF1A1A1A),
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/admin');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20,
+                        color: Color(0xFF1A1A1A),
+                      ),
+                    ),
                   ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     'Manage Categories',
                     style: TextStyle(
                       fontSize: 17,
@@ -65,8 +78,8 @@ class ManageCategoriesScreen extends StatelessWidget {
                       color: Color(0xFF1A1A1A),
                     ),
                   ),
-                  Spacer(),
-                  SizedBox(width: 20), // balance
+                  const Spacer(),
+                  const SizedBox(width: 28), // balance
                 ],
               ),
             ),
@@ -77,7 +90,7 @@ class ManageCategoriesScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 physics: const BouncingScrollPhysics(),
                 itemCount: categories.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 12),
+                separatorBuilder: (context, index) => const SizedBox(height: 12),
                 itemBuilder: (_, index) {
                   final cat = categories[index];
                   return _CategoryTile(
@@ -234,17 +247,21 @@ class _CategoryTile extends StatelessWidget {
           const SizedBox(width: 8),
 
           // ── Delete Button ──
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: const Color(0xFFFFEBEE), // light red
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Icons.delete_outline,
-              size: 18,
-              color: Color(0xFFE53935),
+          InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFEBEE), // light red
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(
+                Icons.delete_outline,
+                size: 18,
+                color: Color(0xFFE53935),
+              ),
             ),
           ),
         ],

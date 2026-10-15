@@ -29,8 +29,21 @@ class _UpdateOrderStatusScreenState extends State<UpdateOrderStatusScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.arrow_back_ios_new,
-                      size: 20, color: Color(0xFF1A1A1A)),
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/admin/orders');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(Icons.arrow_back_ios_new,
+                          size: 20, color: Color(0xFF1A1A1A)),
+                    ),
+                  ),
                   const Spacer(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,7 +67,7 @@ class _UpdateOrderStatusScreenState extends State<UpdateOrderStatusScreen> {
                     ],
                   ),
                   const Spacer(),
-                  const SizedBox(width: 20), // balance
+                  const SizedBox(width: 28), // balance
                 ],
               ),
             ),
@@ -170,7 +183,14 @@ class _UpdateOrderStatusScreenState extends State<UpdateOrderStatusScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    } else {
+                      Navigator.pushReplacementNamed(
+                          context, '/admin/orders');
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3B2E9B),
                     shape: RoundedRectangleBorder(

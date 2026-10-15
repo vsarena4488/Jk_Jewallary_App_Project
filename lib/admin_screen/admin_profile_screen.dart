@@ -20,11 +20,24 @@ class AdminProfileScreen extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
-                children: const [
-                  Icon(Icons.arrow_back_ios_new,
-                      size: 20, color: Color(0xFF1A1A1A)),
-                  Spacer(),
-                  Text(
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/admin');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(Icons.arrow_back_ios_new,
+                          size: 20, color: Color(0xFF1A1A1A)),
+                    ),
+                  ),
+                  const Spacer(),
+                  const Text(
                     'Admin Profile',
                     style: TextStyle(
                       fontSize: 17,
@@ -32,8 +45,8 @@ class AdminProfileScreen extends StatelessWidget {
                       color: Color(0xFF1A1A1A),
                     ),
                   ),
-                  Spacer(),
-                  SizedBox(width: 20), // balance
+                  const Spacer(),
+                  const SizedBox(width: 28), // balance
                 ],
               ),
             ),
@@ -140,7 +153,38 @@ class AdminProfileScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 52,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              title: const Text('Log Out'),
+                              content: const Text(
+                                  'Are you sure you want to log out from admin?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(ctx),
+                                  child: const Text('Cancel'),
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        const Color(0xFFE53935),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(ctx);
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      '/login',
+                                      (route) => false,
+                                    );
+                                  },
+                                  child: const Text('Log Out',
+                                      style: TextStyle(color: Colors.white)),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFE53935), // red
                           shape: RoundedRectangleBorder(

@@ -27,7 +27,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/jewellery');
+                      }
+                    },
                     icon: const Icon(Icons.arrow_back_ios_new, size: 20),
                     color: const Color(0xFF1A1A1A),
                   ),
@@ -72,7 +78,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             child: Image.asset(
                               s1,
                               fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => const Icon(
+                              errorBuilder: (context, error, stackTrace) => const Icon(
                                 Icons.diamond,
                                 size: 80,
                                 color: Colors.grey,

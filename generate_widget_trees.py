@@ -12,11 +12,12 @@ PAGES = [
         "name": "MyApp (Root Entry & Route Map)",
         "file": "lib/main.dart",
         "type": "StatelessWidget",
-        "description": "Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (LoginScreen), and comprehensive named routes.",
+        "description": "Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (SplashScreen), and comprehensive named routes.",
         "tree": """MaterialApp
 ├── ThemeData (colorScheme: ColorScheme.fromSeed(seedColor: #3B2E9B), useMaterial3: true)
-├── LoginScreen (home)
-└── Routes Map (30 Named Routes)
+├── SplashScreen (home)
+└── Routes Map (31 Named Routes)
+    ├── '/splash' ──────────────> SplashScreen
     ├── '/login' ───────────────> LoginScreen
     ├── '/register' ────────────> RegisterScreen
     ├── '/forgot-password' ─────> ForgotPasswordScreen
@@ -47,6 +48,24 @@ PAGES = [
     ├── '/admin/users/add' ─────> AddUserScreen
     ├── '/admin/profile' ───────> AdminProfileScreen
     └── '/admin/profile/edit' ──> EditProfileScreen"""
+    },
+    {
+        "category": "Authentication Screens",
+        "name": "SplashScreen",
+        "file": "lib/authentication/splashscreen.dart",
+        "type": "StatefulWidget",
+        "description": "Application launch splash screen with animated branding and automated transition to LoginScreen.",
+        "tree": """Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── Center
+        └── FadeTransition (_fadeAnimation)
+            └── ScaleTransition (_scaleAnimation)
+                └── Column (mainAxisAlignment: center)
+                    ├── Container (circular badge, diamond icon, size: 44, color: #3520A5)
+                    ├── SizedBox (height: 24)
+                    ├── Text("JK JEWELLERY", fontSize: 22, fontWeight: bold, color: #3520A5)
+                    ├── SizedBox (height: 6)
+                    └── Text("LUXURY COLLECTION", fontSize: 11, fontWeight: w400, letterSpacing: 3.5)"""
     },
     {
         "category": "Authentication Screens",

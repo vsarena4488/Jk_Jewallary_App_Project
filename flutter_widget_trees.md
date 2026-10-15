@@ -7,38 +7,39 @@ This document provides an exhaustive, production-grade visual breakdown of the F
 | # | Page Name | Category | File Path | Type |
 |---|-----------|----------|-----------|------|
 | 01 | **MyApp (Root Entry & Route Map)** | Application Root & Entry | `lib/main.dart` | `StatelessWidget` |
-| 02 | **LoginScreen** | Authentication Screens | `lib/authentication/loginscreen.dart` | `StatefulWidget` |
-| 03 | **RegisterScreen** | Authentication Screens | `lib/authentication/registerscreen.dart` | `StatefulWidget` |
-| 04 | **ForgotPasswordScreen** | Authentication Screens | `lib/authentication/forgotPasswordScreen.dart` | `StatefulWidget` |
-| 05 | **OtpScreen** | Authentication Screens | `lib/authentication/otpscreen.dart` | `StatefulWidget` |
-| 06 | **PasswordScreen (Set New Password)** | Authentication Screens | `lib/authentication/passwordscreen.dart` | `StatefulWidget` |
-| 07 | **HomeScreen** | User Experience Screens | `lib/screens/homescreen.dart` | `StatelessWidget` |
-| 08 | **JewelleryScreen (Catalog / All Jewellery)** | User Experience Screens | `lib/screens/jewelleryscreen.dart` | `StatelessWidget` |
-| 09 | **SearchFilterScreen** | User Experience Screens | `lib/screens/searchfilterscreen.dart` | `StatefulWidget` |
-| 10 | **ProductDetailsScreen** | User Experience Screens | `lib/screens/productdetailsscreen.dart` | `StatefulWidget` |
-| 11 | **CartScreen** | User Experience Screens | `lib/screens/cartscreen.dart` | `StatefulWidget` |
-| 12 | **CheckoutScreen** | User Experience Screens | `lib/screens/checkoutscreen.dart` | `StatelessWidget` |
-| 13 | **PaymentScreen** | User Experience Screens | `lib/screens/paymentscreen.dart` | `StatefulWidget` |
-| 14 | **OrderHistoryScreen** | User Experience Screens | `lib/screens/orderhistoryscreen.dart` | `StatefulWidget` |
-| 15 | **ProfileScreen** | User Experience Screens | `lib/screens/profilescreen.dart` | `StatelessWidget` |
-| 16 | **WishlistScreen** | User Experience Screens | `lib/screens/wishlistscreen.dart` | `StatelessWidget` |
-| 17 | **TermsScreen** | User Experience Screens | `lib/screens/tearmscreen.dart` | `StatelessWidget` |
-| 18 | **AdminDashboardScreen** | Admin Portal Screens | `lib/admin_screen/admin_dashboard_screen.dart` | `StatelessWidget` |
-| 19 | **AdminProductsScreen** | Admin Portal Screens | `lib/admin_screen/admin_products_screen.dart` | `StatelessWidget` |
-| 20 | **AddProductScreen** | Admin Portal Screens | `lib/admin_screen/add_product_screen.dart` | `StatefulWidget` |
-| 21 | **EditProductScreen** | Admin Portal Screens | `lib/admin_screen/edit_product_screen.dart` | `StatefulWidget` |
-| 22 | **DeleteProductScreen** | Admin Portal Screens | `lib/admin_screen/delete_product_screen.dart` | `StatelessWidget` |
-| 23 | **ManageCategoriesScreen** | Admin Portal Screens | `lib/admin_screen/manage_categories_screen.dart` | `StatelessWidget` |
-| 24 | **AddCategoryScreen** | Admin Portal Screens | `lib/admin_screen/add_category_screen.dart` | `StatefulWidget` |
-| 25 | **EditCategoryScreen** | Admin Portal Screens | `lib/admin_screen/edit_category_screen.dart` | `StatefulWidget` |
-| 26 | **ManageOrdersScreen** | Admin Portal Screens | `lib/admin_screen/manage_orders_screen.dart` | `StatelessWidget` |
-| 27 | **UpdateOrderStatusScreen** | Admin Portal Screens | `lib/admin_screen/update_order_status_screen.dart` | `StatefulWidget` |
-| 28 | **ManageUsersScreen** | Admin Portal Screens | `lib/admin_screen/manage_users_screen.dart` | `StatelessWidget` |
-| 29 | **AddUserScreen** | Admin Portal Screens | `lib/admin_screen/add_user_screen.dart` | `StatefulWidget` |
-| 30 | **AdminProfileScreen** | Admin Portal Screens | `lib/admin_screen/admin_profile_screen.dart` | `StatelessWidget` |
-| 31 | **EditProfileScreen** | Admin Portal Screens | `lib/admin_screen/edit_profile_screen.dart` | `StatefulWidget` |
-| 32 | **UserBottomNav** | Shared Bottom Navigation Widgets | `lib/widgets/user_bottom_nav.dart` | `StatelessWidget` |
-| 33 | **AdminBottomNav** | Shared Bottom Navigation Widgets | `lib/widgets/admin_bottom_nav.dart` | `StatelessWidget` |
+| 02 | **SplashScreen** | Authentication Screens | `lib/authentication/splashscreen.dart` | `StatefulWidget` |
+| 03 | **LoginScreen** | Authentication Screens | `lib/authentication/loginscreen.dart` | `StatefulWidget` |
+| 04 | **RegisterScreen** | Authentication Screens | `lib/authentication/registerscreen.dart` | `StatefulWidget` |
+| 05 | **ForgotPasswordScreen** | Authentication Screens | `lib/authentication/forgotPasswordScreen.dart` | `StatefulWidget` |
+| 06 | **OtpScreen** | Authentication Screens | `lib/authentication/otpscreen.dart` | `StatefulWidget` |
+| 07 | **PasswordScreen (Set New Password)** | Authentication Screens | `lib/authentication/passwordscreen.dart` | `StatefulWidget` |
+| 08 | **HomeScreen** | User Experience Screens | `lib/screens/homescreen.dart` | `StatelessWidget` |
+| 09 | **JewelleryScreen (Catalog / All Jewellery)** | User Experience Screens | `lib/screens/jewelleryscreen.dart` | `StatelessWidget` |
+| 10 | **SearchFilterScreen** | User Experience Screens | `lib/screens/searchfilterscreen.dart` | `StatefulWidget` |
+| 11 | **ProductDetailsScreen** | User Experience Screens | `lib/screens/productdetailsscreen.dart` | `StatefulWidget` |
+| 12 | **CartScreen** | User Experience Screens | `lib/screens/cartscreen.dart` | `StatefulWidget` |
+| 13 | **CheckoutScreen** | User Experience Screens | `lib/screens/checkoutscreen.dart` | `StatelessWidget` |
+| 14 | **PaymentScreen** | User Experience Screens | `lib/screens/paymentscreen.dart` | `StatefulWidget` |
+| 15 | **OrderHistoryScreen** | User Experience Screens | `lib/screens/orderhistoryscreen.dart` | `StatefulWidget` |
+| 16 | **ProfileScreen** | User Experience Screens | `lib/screens/profilescreen.dart` | `StatelessWidget` |
+| 17 | **WishlistScreen** | User Experience Screens | `lib/screens/wishlistscreen.dart` | `StatelessWidget` |
+| 18 | **TermsScreen** | User Experience Screens | `lib/screens/tearmscreen.dart` | `StatelessWidget` |
+| 19 | **AdminDashboardScreen** | Admin Portal Screens | `lib/admin_screen/admin_dashboard_screen.dart` | `StatelessWidget` |
+| 20 | **AdminProductsScreen** | Admin Portal Screens | `lib/admin_screen/admin_products_screen.dart` | `StatelessWidget` |
+| 21 | **AddProductScreen** | Admin Portal Screens | `lib/admin_screen/add_product_screen.dart` | `StatefulWidget` |
+| 22 | **EditProductScreen** | Admin Portal Screens | `lib/admin_screen/edit_product_screen.dart` | `StatefulWidget` |
+| 23 | **DeleteProductScreen** | Admin Portal Screens | `lib/admin_screen/delete_product_screen.dart` | `StatelessWidget` |
+| 24 | **ManageCategoriesScreen** | Admin Portal Screens | `lib/admin_screen/manage_categories_screen.dart` | `StatelessWidget` |
+| 25 | **AddCategoryScreen** | Admin Portal Screens | `lib/admin_screen/add_category_screen.dart` | `StatefulWidget` |
+| 26 | **EditCategoryScreen** | Admin Portal Screens | `lib/admin_screen/edit_category_screen.dart` | `StatefulWidget` |
+| 27 | **ManageOrdersScreen** | Admin Portal Screens | `lib/admin_screen/manage_orders_screen.dart` | `StatelessWidget` |
+| 28 | **UpdateOrderStatusScreen** | Admin Portal Screens | `lib/admin_screen/update_order_status_screen.dart` | `StatefulWidget` |
+| 29 | **ManageUsersScreen** | Admin Portal Screens | `lib/admin_screen/manage_users_screen.dart` | `StatelessWidget` |
+| 30 | **AddUserScreen** | Admin Portal Screens | `lib/admin_screen/add_user_screen.dart` | `StatefulWidget` |
+| 31 | **AdminProfileScreen** | Admin Portal Screens | `lib/admin_screen/admin_profile_screen.dart` | `StatelessWidget` |
+| 32 | **EditProfileScreen** | Admin Portal Screens | `lib/admin_screen/edit_profile_screen.dart` | `StatefulWidget` |
+| 33 | **UserBottomNav** | Shared Bottom Navigation Widgets | `lib/widgets/user_bottom_nav.dart` | `StatelessWidget` |
+| 34 | **AdminBottomNav** | Shared Bottom Navigation Widgets | `lib/widgets/admin_bottom_nav.dart` | `StatelessWidget` |
 
 ---
 
@@ -48,13 +49,14 @@ This document provides an exhaustive, production-grade visual breakdown of the F
 
 - **File:** `lib/main.dart`
 - **Type:** `StatelessWidget`
-- **Description:** Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (LoginScreen), and comprehensive named routes.
+- **Description:** Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (SplashScreen), and comprehensive named routes.
 
 ```text
 MaterialApp
 ├── ThemeData (colorScheme: ColorScheme.fromSeed(seedColor: #3B2E9B), useMaterial3: true)
-├── LoginScreen (home)
-└── Routes Map (30 Named Routes)
+├── SplashScreen (home)
+└── Routes Map (31 Named Routes)
+    ├── '/splash' ──────────────> SplashScreen
     ├── '/login' ───────────────> LoginScreen
     ├── '/register' ────────────> RegisterScreen
     ├── '/forgot-password' ─────> ForgotPasswordScreen
@@ -89,7 +91,27 @@ MaterialApp
 
 ## Authentication Screens
 
-### 02. LoginScreen
+### 02. SplashScreen
+
+- **File:** `lib/authentication/splashscreen.dart`
+- **Type:** `StatefulWidget`
+- **Description:** Application launch splash screen with animated branding and automated transition to LoginScreen.
+
+```text
+Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── Center
+        └── FadeTransition (_fadeAnimation)
+            └── ScaleTransition (_scaleAnimation)
+                └── Column (mainAxisAlignment: center)
+                    ├── Container (circular badge, diamond icon, size: 44, color: #3520A5)
+                    ├── SizedBox (height: 24)
+                    ├── Text("JK JEWELLERY", fontSize: 22, fontWeight: bold, color: #3520A5)
+                    ├── SizedBox (height: 6)
+                    └── Text("LUXURY COLLECTION", fontSize: 11, fontWeight: w400, letterSpacing: 3.5)
+```
+
+### 03. LoginScreen
 
 - **File:** `lib/authentication/loginscreen.dart`
 - **Type:** `StatefulWidget`
@@ -135,7 +157,7 @@ Scaffold (backgroundColor: Colors.white)
             └── SizedBox (height: 40)
 ```
 
-### 03. RegisterScreen
+### 04. RegisterScreen
 
 - **File:** `lib/authentication/registerscreen.dart`
 - **Type:** `StatefulWidget`
@@ -186,7 +208,7 @@ Scaffold (backgroundColor: Colors.white)
             └── SizedBox (height: 40)
 ```
 
-### 04. ForgotPasswordScreen
+### 05. ForgotPasswordScreen
 
 - **File:** `lib/authentication/forgotPasswordScreen.dart`
 - **Type:** `StatefulWidget`
@@ -217,7 +239,7 @@ Scaffold (backgroundColor: Colors.white)
             └── SizedBox (height: 40)
 ```
 
-### 05. OtpScreen
+### 06. OtpScreen
 
 - **File:** `lib/authentication/otpscreen.dart`
 - **Type:** `StatefulWidget`
@@ -248,7 +270,7 @@ Scaffold (backgroundColor: Colors.white)
             └── SizedBox (height: 40)
 ```
 
-### 06. PasswordScreen (Set New Password)
+### 07. PasswordScreen (Set New Password)
 
 - **File:** `lib/authentication/passwordscreen.dart`
 - **Type:** `StatefulWidget`
@@ -286,7 +308,7 @@ Scaffold (backgroundColor: Colors.white)
 
 ## User Experience Screens
 
-### 07. HomeScreen
+### 08. HomeScreen
 
 - **File:** `lib/screens/homescreen.dart`
 - **Type:** `StatelessWidget`
@@ -367,7 +389,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 0) (bottomNavigationBar)
 ```
 
-### 08. JewelleryScreen (Catalog / All Jewellery)
+### 09. JewelleryScreen (Catalog / All Jewellery)
 
 - **File:** `lib/screens/jewelleryscreen.dart`
 - **Type:** `StatelessWidget`
@@ -415,7 +437,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 1) (bottomNavigationBar)
 ```
 
-### 09. SearchFilterScreen
+### 10. SearchFilterScreen
 
 - **File:** `lib/screens/searchfilterscreen.dart`
 - **Type:** `StatefulWidget`
@@ -468,7 +490,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 1) (bottomNavigationBar)
 ```
 
-### 10. ProductDetailsScreen
+### 11. ProductDetailsScreen
 
 - **File:** `lib/screens/productdetailsscreen.dart`
 - **Type:** `StatefulWidget`
@@ -523,7 +545,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 3) (bottomNavigationBar)
 ```
 
-### 11. CartScreen
+### 12. CartScreen
 
 - **File:** `lib/screens/cartscreen.dart`
 - **Type:** `StatefulWidget`
@@ -573,7 +595,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 3) (bottomNavigationBar)
 ```
 
-### 12. CheckoutScreen
+### 13. CheckoutScreen
 
 - **File:** `lib/screens/checkoutscreen.dart`
 - **Type:** `StatelessWidget`
@@ -627,7 +649,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 3) (bottomNavigationBar)
 ```
 
-### 13. PaymentScreen
+### 14. PaymentScreen
 
 - **File:** `lib/screens/paymentscreen.dart`
 - **Type:** `StatefulWidget`
@@ -672,7 +694,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 3) (bottomNavigationBar)
 ```
 
-### 14. OrderHistoryScreen
+### 15. OrderHistoryScreen
 
 - **File:** `lib/screens/orderhistoryscreen.dart`
 - **Type:** `StatefulWidget`
@@ -722,7 +744,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 3) (bottomNavigationBar)
 ```
 
-### 15. ProfileScreen
+### 16. ProfileScreen
 
 - **File:** `lib/screens/profilescreen.dart`
 - **Type:** `StatelessWidget`
@@ -763,7 +785,7 @@ Scaffold (backgroundColor: Colors.white)
 └── UserBottomNav (currentIndex: 4) (bottomNavigationBar)
 ```
 
-### 16. WishlistScreen
+### 17. WishlistScreen
 
 - **File:** `lib/screens/wishlistscreen.dart`
 - **Type:** `StatelessWidget`
@@ -780,7 +802,7 @@ Scaffold
 └── UserBottomNav (currentIndex: 2) (bottomNavigationBar)
 ```
 
-### 17. TermsScreen
+### 18. TermsScreen
 
 - **File:** `lib/screens/tearmscreen.dart`
 - **Type:** `StatelessWidget`
@@ -824,7 +846,7 @@ Scaffold (backgroundColor: Colors.white)
 
 ## Admin Portal Screens
 
-### 18. AdminDashboardScreen
+### 19. AdminDashboardScreen
 
 - **File:** `lib/admin_screen/admin_dashboard_screen.dart`
 - **Type:** `StatelessWidget`
@@ -874,7 +896,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 0) (bottomNavigationBar)
 ```
 
-### 19. AdminProductsScreen
+### 20. AdminProductsScreen
 
 - **File:** `lib/admin_screen/admin_products_screen.dart`
 - **Type:** `StatelessWidget`
@@ -915,7 +937,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)
 ```
 
-### 20. AddProductScreen
+### 21. AddProductScreen
 
 - **File:** `lib/admin_screen/add_product_screen.dart`
 - **Type:** `StatefulWidget`
@@ -978,7 +1000,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)
 ```
 
-### 21. EditProductScreen
+### 22. EditProductScreen
 
 - **File:** `lib/admin_screen/edit_product_screen.dart`
 - **Type:** `StatefulWidget`
@@ -1034,7 +1056,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)
 ```
 
-### 22. DeleteProductScreen
+### 23. DeleteProductScreen
 
 - **File:** `lib/admin_screen/delete_product_screen.dart`
 - **Type:** `StatelessWidget`
@@ -1070,7 +1092,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 1) (bottomNavigationBar)
 ```
 
-### 23. ManageCategoriesScreen
+### 24. ManageCategoriesScreen
 
 - **File:** `lib/admin_screen/manage_categories_screen.dart`
 - **Type:** `StatelessWidget`
@@ -1115,7 +1137,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 2) (bottomNavigationBar)
 ```
 
-### 24. AddCategoryScreen
+### 25. AddCategoryScreen
 
 - **File:** `lib/admin_screen/add_category_screen.dart`
 - **Type:** `StatefulWidget`
@@ -1164,7 +1186,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 2) (bottomNavigationBar)
 ```
 
-### 25. EditCategoryScreen
+### 26. EditCategoryScreen
 
 - **File:** `lib/admin_screen/edit_category_screen.dart`
 - **Type:** `StatefulWidget`
@@ -1214,7 +1236,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 2) (bottomNavigationBar)
 ```
 
-### 26. ManageOrdersScreen
+### 27. ManageOrdersScreen
 
 - **File:** `lib/admin_screen/manage_orders_screen.dart`
 - **Type:** `StatelessWidget`
@@ -1259,7 +1281,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 3) (bottomNavigationBar)
 ```
 
-### 27. UpdateOrderStatusScreen
+### 28. UpdateOrderStatusScreen
 
 - **File:** `lib/admin_screen/update_order_status_screen.dart`
 - **Type:** `StatefulWidget`
@@ -1296,7 +1318,7 @@ Scaffold (backgroundColor: Colors.white)
                     └── Text("Confirm Update")
 ```
 
-### 28. ManageUsersScreen
+### 29. ManageUsersScreen
 
 - **File:** `lib/admin_screen/manage_users_screen.dart`
 - **Type:** `StatelessWidget`
@@ -1339,7 +1361,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 4) (bottomNavigationBar)
 ```
 
-### 29. AddUserScreen
+### 30. AddUserScreen
 
 - **File:** `lib/admin_screen/add_user_screen.dart`
 - **Type:** `StatefulWidget`
@@ -1396,7 +1418,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 4) (bottomNavigationBar)
 ```
 
-### 30. AdminProfileScreen
+### 31. AdminProfileScreen
 
 - **File:** `lib/admin_screen/admin_profile_screen.dart`
 - **Type:** `StatelessWidget`
@@ -1443,7 +1465,7 @@ Scaffold (backgroundColor: Colors.white)
 └── AdminBottomNav (currentIndex: 5) (bottomNavigationBar)
 ```
 
-### 31. EditProfileScreen
+### 32. EditProfileScreen
 
 - **File:** `lib/admin_screen/edit_profile_screen.dart`
 - **Type:** `StatefulWidget`
@@ -1495,7 +1517,7 @@ Scaffold (backgroundColor: Colors.white)
 
 ## Shared Bottom Navigation Widgets
 
-### 32. UserBottomNav
+### 33. UserBottomNav
 
 - **File:** `lib/widgets/user_bottom_nav.dart`
 - **Type:** `StatelessWidget`
@@ -1528,7 +1550,7 @@ Container (color: Colors.white, boxShadow: subtle top blur)
                     └── Text("Profile")
 ```
 
-### 33. AdminBottomNav
+### 34. AdminBottomNav
 
 - **File:** `lib/widgets/admin_bottom_nav.dart`
 - **Type:** `StatelessWidget`

@@ -106,6 +106,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Colors.grey.shade400,
                     fontSize: 15,
                   ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscurePassword
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                      color: Colors.grey,
+                      size: 20,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                  ),
                   contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16, vertical: 16),
                   enabledBorder: OutlineInputBorder(

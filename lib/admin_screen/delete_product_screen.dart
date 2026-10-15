@@ -87,7 +87,14 @@ class DeleteProductScreen extends StatelessWidget {
                       child: SizedBox(
                         height: 48,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            } else {
+                              Navigator.pushReplacementNamed(
+                                  context, '/admin/products');
+                            }
+                          },
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(
                               color: Colors.grey.shade300,
@@ -117,7 +124,14 @@ class DeleteProductScreen extends StatelessWidget {
                       child: SizedBox(
                         height: 48,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            } else {
+                              Navigator.pushReplacementNamed(
+                                  context, '/admin/products');
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFE53935),
                             shape: RoundedRectangleBorder(

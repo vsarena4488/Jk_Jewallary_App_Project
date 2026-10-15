@@ -35,7 +35,13 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      }
+                    },
                     icon: const Icon(Icons.arrow_back_ios_new, size: 20),
                     color: const Color(0xFF1A1A1A),
                   ),

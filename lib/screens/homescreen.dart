@@ -83,6 +83,7 @@ class HomeScreen extends StatelessWidget {
                               size: 22,
                             ),
                           ),
+                          
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(
                             vertical: 14,
@@ -305,7 +306,7 @@ class _ProductCard extends StatelessWidget {
                     child: Image.asset(
                       imagePath,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => const Icon(
+                      errorBuilder: (_, _, _) => const Icon(
                         Icons.diamond,
                         size: 40,
                         color: Colors.grey,

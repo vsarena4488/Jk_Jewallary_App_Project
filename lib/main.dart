@@ -22,6 +22,7 @@ import 'package:jk_jewallary_project/authentication/loginscreen.dart';
 import 'package:jk_jewallary_project/authentication/otpscreen.dart';
 import 'package:jk_jewallary_project/authentication/passwordscreen.dart';
 import 'package:jk_jewallary_project/authentication/registerscreen.dart';
+import 'package:jk_jewallary_project/authentication/splashscreen.dart';
 
 //user screens
 import 'package:jk_jewallary_project/screens/cartscreen.dart';
@@ -50,8 +51,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3B2E9B)),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const SplashScreen(),
       routes: {
+        '/splash': (_) => const SplashScreen(),
         '/login': (_) => const LoginScreen(),
         '/register': (_) => const RegisterScreen(),
         '/forgot-password': (_) => const ForgotPasswordScreen(),

@@ -40,10 +40,23 @@ class _CartScreenState extends State<CartScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 20,
-                    color: Color(0xFF1A1A1A),
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20,
+                        color: Color(0xFF1A1A1A),
+                      ),
+                    ),
                   ),
                   const Spacer(),
                   const Text(
@@ -70,7 +83,7 @@ class _CartScreenState extends State<CartScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 physics: const BouncingScrollPhysics(),
                 itemCount: _cartItems.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 14),
+                separatorBuilder: (context, index) => const SizedBox(height: 14),
                 itemBuilder: (_, index) {
                   final item = _cartItems[index];
                   return _CartItemCard(
@@ -84,7 +97,7 @@ class _CartScreenState extends State<CartScreen> {
                         setState(() => item['qty']--);
                       }
                     },
-                    onDelete: () {},
+                    onDelete: () => setState(() => _cartItems.removeAt(index)),
                   );
                 },
               ),
@@ -97,7 +110,7 @@ class _CartScreenState extends State<CartScreen> {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.06),
+                    color: Colors.black.withValues(alpha: 0.06),
                     blurRadius: 12,
                     offset: const Offset(0, -4),
                   ),
@@ -213,7 +226,7 @@ class _CartItemCard extends StatelessWidget {
               child: Image.asset(
                 image,
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) =>
+                errorBuilder: (context, error, stackTrace) =>
                     const Icon(Icons.diamond, size: 40, color: Colors.grey),
               ),
             ),

@@ -72,45 +72,46 @@
 <body>
 <div class="container">
 <h1>JK Jewellery — Flutter Widget Tree Architecture</h1>
-<p>Complete widget tree hierarchy analysis across all <strong>33</strong> Dart screens and components in the <code>lib</code> folder.</p>
+<p>Complete widget tree hierarchy analysis across all <strong>34</strong> Dart screens and components in the <code>lib</code> folder.</p>
 <table>
 <thead>
 <tr><th>#</th><th>Screen / Component</th><th>Category</th><th>File Path</th><th>Type</th></tr>
 </thead>
 <tbody>
 <tr><td>01</td><td><strong>MyApp (Root Entry & Route Map)</strong></td><td>Application Root & Entry</td><td><code>lib/main.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>02</td><td><strong>LoginScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/loginscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>03</td><td><strong>RegisterScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/registerscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>04</td><td><strong>ForgotPasswordScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/forgotPasswordScreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>05</td><td><strong>OtpScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/otpscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>06</td><td><strong>PasswordScreen (Set New Password)</strong></td><td>Authentication Screens</td><td><code>lib/authentication/passwordscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>07</td><td><strong>HomeScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/homescreen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>08</td><td><strong>JewelleryScreen (Catalog / All Jewellery)</strong></td><td>User Experience Screens</td><td><code>lib/screens/jewelleryscreen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>09</td><td><strong>SearchFilterScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/searchfilterscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>10</td><td><strong>ProductDetailsScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/productdetailsscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>11</td><td><strong>CartScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/cartscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>12</td><td><strong>CheckoutScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/checkoutscreen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>13</td><td><strong>PaymentScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/paymentscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>14</td><td><strong>OrderHistoryScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/orderhistoryscreen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>15</td><td><strong>ProfileScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/profilescreen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>16</td><td><strong>WishlistScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/wishlistscreen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>17</td><td><strong>TermsScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/tearmscreen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>18</td><td><strong>AdminDashboardScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_dashboard_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>19</td><td><strong>AdminProductsScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_products_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>20</td><td><strong>AddProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_product_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>21</td><td><strong>EditProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_product_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>22</td><td><strong>DeleteProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/delete_product_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>23</td><td><strong>ManageCategoriesScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_categories_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>24</td><td><strong>AddCategoryScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_category_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>25</td><td><strong>EditCategoryScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_category_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>26</td><td><strong>ManageOrdersScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_orders_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>27</td><td><strong>UpdateOrderStatusScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/update_order_status_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>28</td><td><strong>ManageUsersScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_users_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>29</td><td><strong>AddUserScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_user_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>30</td><td><strong>AdminProfileScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_profile_screen.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>31</td><td><strong>EditProfileScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_profile_screen.dart</code></td><td>StatefulWidget</td></tr>
-<tr><td>32</td><td><strong>UserBottomNav</strong></td><td>Shared Bottom Navigation Widgets</td><td><code>lib/widgets/user_bottom_nav.dart</code></td><td>StatelessWidget</td></tr>
-<tr><td>33</td><td><strong>AdminBottomNav</strong></td><td>Shared Bottom Navigation Widgets</td><td><code>lib/widgets/admin_bottom_nav.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>02</td><td><strong>SplashScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/splashscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>03</td><td><strong>LoginScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/loginscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>04</td><td><strong>RegisterScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/registerscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>05</td><td><strong>ForgotPasswordScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/forgotPasswordScreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>06</td><td><strong>OtpScreen</strong></td><td>Authentication Screens</td><td><code>lib/authentication/otpscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>07</td><td><strong>PasswordScreen (Set New Password)</strong></td><td>Authentication Screens</td><td><code>lib/authentication/passwordscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>08</td><td><strong>HomeScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/homescreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>09</td><td><strong>JewelleryScreen (Catalog / All Jewellery)</strong></td><td>User Experience Screens</td><td><code>lib/screens/jewelleryscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>10</td><td><strong>SearchFilterScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/searchfilterscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>11</td><td><strong>ProductDetailsScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/productdetailsscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>12</td><td><strong>CartScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/cartscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>13</td><td><strong>CheckoutScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/checkoutscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>14</td><td><strong>PaymentScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/paymentscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>15</td><td><strong>OrderHistoryScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/orderhistoryscreen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>16</td><td><strong>ProfileScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/profilescreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>17</td><td><strong>WishlistScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/wishlistscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>18</td><td><strong>TermsScreen</strong></td><td>User Experience Screens</td><td><code>lib/screens/tearmscreen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>19</td><td><strong>AdminDashboardScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_dashboard_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>20</td><td><strong>AdminProductsScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_products_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>21</td><td><strong>AddProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_product_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>22</td><td><strong>EditProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_product_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>23</td><td><strong>DeleteProductScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/delete_product_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>24</td><td><strong>ManageCategoriesScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_categories_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>25</td><td><strong>AddCategoryScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_category_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>26</td><td><strong>EditCategoryScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_category_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>27</td><td><strong>ManageOrdersScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_orders_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>28</td><td><strong>UpdateOrderStatusScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/update_order_status_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>29</td><td><strong>ManageUsersScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/manage_users_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>30</td><td><strong>AddUserScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/add_user_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>31</td><td><strong>AdminProfileScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/admin_profile_screen.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>32</td><td><strong>EditProfileScreen</strong></td><td>Admin Portal Screens</td><td><code>lib/admin_screen/edit_profile_screen.dart</code></td><td>StatefulWidget</td></tr>
+<tr><td>33</td><td><strong>UserBottomNav</strong></td><td>Shared Bottom Navigation Widgets</td><td><code>lib/widgets/user_bottom_nav.dart</code></td><td>StatelessWidget</td></tr>
+<tr><td>34</td><td><strong>AdminBottomNav</strong></td><td>Shared Bottom Navigation Widgets</td><td><code>lib/widgets/admin_bottom_nav.dart</code></td><td>StatelessWidget</td></tr>
 </tbody></table>
 <h2>Application Root & Entry</h2>
 
@@ -121,11 +122,12 @@
     <span class="badge">StatelessWidget</span>
     <span class="badge">Application Root & Entry</span>
   </div>
-  <p style="color: #555; margin: 8px 0;">Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (LoginScreen), and comprehensive named routes.</p>
+  <p style="color: #555; margin: 8px 0;">Root configuration of JK Jewellery application. Sets up MaterialApp, seed theme color (#3B2E9B), initial home (SplashScreen), and comprehensive named routes.</p>
   <pre><code>MaterialApp
 ├── ThemeData (colorScheme: ColorScheme.fromSeed(seedColor: #3B2E9B), useMaterial3: true)
-├── LoginScreen (home)
-└── Routes Map (30 Named Routes)
+├── SplashScreen (home)
+└── Routes Map (31 Named Routes)
+    ├── '/splash' ──────────────&gt; SplashScreen
     ├── '/login' ───────────────&gt; LoginScreen
     ├── '/register' ────────────&gt; RegisterScreen
     ├── '/forgot-password' ─────&gt; ForgotPasswordScreen
@@ -161,7 +163,29 @@
 <h2>Authentication Screens</h2>
 
 <div style="margin-bottom: 30px;">
-  <h3>02. LoginScreen</h3>
+  <h3>02. SplashScreen</h3>
+  <div>
+    <span class="badge file-badge">lib/authentication/splashscreen.dart</span>
+    <span class="badge">StatefulWidget</span>
+    <span class="badge">Authentication Screens</span>
+  </div>
+  <p style="color: #555; margin: 8px 0;">Application launch splash screen with animated branding and automated transition to LoginScreen.</p>
+  <pre><code>Scaffold (backgroundColor: Colors.white)
+└── SafeArea
+    └── Center
+        └── FadeTransition (_fadeAnimation)
+            └── ScaleTransition (_scaleAnimation)
+                └── Column (mainAxisAlignment: center)
+                    ├── Container (circular badge, diamond icon, size: 44, color: #3520A5)
+                    ├── SizedBox (height: 24)
+                    ├── Text("JK JEWELLERY", fontSize: 22, fontWeight: bold, color: #3520A5)
+                    ├── SizedBox (height: 6)
+                    └── Text("LUXURY COLLECTION", fontSize: 11, fontWeight: w400, letterSpacing: 3.5)</code></pre>
+</div>
+
+
+<div style="margin-bottom: 30px;">
+  <h3>03. LoginScreen</h3>
   <div>
     <span class="badge file-badge">lib/authentication/loginscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -209,7 +233,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>03. RegisterScreen</h3>
+  <h3>04. RegisterScreen</h3>
   <div>
     <span class="badge file-badge">lib/authentication/registerscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -262,7 +286,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>04. ForgotPasswordScreen</h3>
+  <h3>05. ForgotPasswordScreen</h3>
   <div>
     <span class="badge file-badge">lib/authentication/forgotPasswordScreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -295,7 +319,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>05. OtpScreen</h3>
+  <h3>06. OtpScreen</h3>
   <div>
     <span class="badge file-badge">lib/authentication/otpscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -328,7 +352,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>06. PasswordScreen (Set New Password)</h3>
+  <h3>07. PasswordScreen (Set New Password)</h3>
   <div>
     <span class="badge file-badge">lib/authentication/passwordscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -367,7 +391,7 @@
 <h2>User Experience Screens</h2>
 
 <div style="margin-bottom: 30px;">
-  <h3>07. HomeScreen</h3>
+  <h3>08. HomeScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/homescreen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -450,7 +474,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>08. JewelleryScreen (Catalog / All Jewellery)</h3>
+  <h3>09. JewelleryScreen (Catalog / All Jewellery)</h3>
   <div>
     <span class="badge file-badge">lib/screens/jewelleryscreen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -500,7 +524,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>09. SearchFilterScreen</h3>
+  <h3>10. SearchFilterScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/searchfilterscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -555,7 +579,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>10. ProductDetailsScreen</h3>
+  <h3>11. ProductDetailsScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/productdetailsscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -612,7 +636,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>11. CartScreen</h3>
+  <h3>12. CartScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/cartscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -664,7 +688,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>12. CheckoutScreen</h3>
+  <h3>13. CheckoutScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/checkoutscreen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -720,7 +744,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>13. PaymentScreen</h3>
+  <h3>14. PaymentScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/paymentscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -767,7 +791,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>14. OrderHistoryScreen</h3>
+  <h3>15. OrderHistoryScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/orderhistoryscreen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -819,7 +843,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>15. ProfileScreen</h3>
+  <h3>16. ProfileScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/profilescreen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -862,7 +886,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>16. WishlistScreen</h3>
+  <h3>17. WishlistScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/wishlistscreen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -881,7 +905,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>17. TermsScreen</h3>
+  <h3>18. TermsScreen</h3>
   <div>
     <span class="badge file-badge">lib/screens/tearmscreen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -926,7 +950,7 @@
 <h2>Admin Portal Screens</h2>
 
 <div style="margin-bottom: 30px;">
-  <h3>18. AdminDashboardScreen</h3>
+  <h3>19. AdminDashboardScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/admin_dashboard_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -978,7 +1002,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>19. AdminProductsScreen</h3>
+  <h3>20. AdminProductsScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/admin_products_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1021,7 +1045,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>20. AddProductScreen</h3>
+  <h3>21. AddProductScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/add_product_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1086,7 +1110,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>21. EditProductScreen</h3>
+  <h3>22. EditProductScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/edit_product_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1144,7 +1168,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>22. DeleteProductScreen</h3>
+  <h3>23. DeleteProductScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/delete_product_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1182,7 +1206,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>23. ManageCategoriesScreen</h3>
+  <h3>24. ManageCategoriesScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/manage_categories_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1229,7 +1253,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>24. AddCategoryScreen</h3>
+  <h3>25. AddCategoryScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/add_category_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1280,7 +1304,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>25. EditCategoryScreen</h3>
+  <h3>26. EditCategoryScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/edit_category_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1332,7 +1356,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>26. ManageOrdersScreen</h3>
+  <h3>27. ManageOrdersScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/manage_orders_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1379,7 +1403,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>27. UpdateOrderStatusScreen</h3>
+  <h3>28. UpdateOrderStatusScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/update_order_status_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1418,7 +1442,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>28. ManageUsersScreen</h3>
+  <h3>29. ManageUsersScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/manage_users_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1463,7 +1487,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>29. AddUserScreen</h3>
+  <h3>30. AddUserScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/add_user_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1522,7 +1546,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>30. AdminProfileScreen</h3>
+  <h3>31. AdminProfileScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/admin_profile_screen.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1571,7 +1595,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>31. EditProfileScreen</h3>
+  <h3>32. EditProfileScreen</h3>
   <div>
     <span class="badge file-badge">lib/admin_screen/edit_profile_screen.dart</span>
     <span class="badge">StatefulWidget</span>
@@ -1624,7 +1648,7 @@
 <h2>Shared Bottom Navigation Widgets</h2>
 
 <div style="margin-bottom: 30px;">
-  <h3>32. UserBottomNav</h3>
+  <h3>33. UserBottomNav</h3>
   <div>
     <span class="badge file-badge">lib/widgets/user_bottom_nav.dart</span>
     <span class="badge">StatelessWidget</span>
@@ -1659,7 +1683,7 @@
 
 
 <div style="margin-bottom: 30px;">
-  <h3>33. AdminBottomNav</h3>
+  <h3>34. AdminBottomNav</h3>
   <div>
     <span class="badge file-badge">lib/widgets/admin_bottom_nav.dart</span>
     <span class="badge">StatelessWidget</span>

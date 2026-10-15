@@ -56,14 +56,27 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
-                children: const [
-                  Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 20,
-                    color: Color(0xFF1A1A1A),
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      }
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20,
+                        color: Color(0xFF1A1A1A),
+                      ),
+                    ),
                   ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     'Order History',
                     style: TextStyle(
                       fontSize: 17,
@@ -71,8 +84,8 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                       color: Color(0xFF1A1A1A),
                     ),
                   ),
-                  Spacer(),
-                  Icon(Icons.search, size: 24, color: Color(0xFF1A1A1A)),
+                  const Spacer(),
+                  const Icon(Icons.search, size: 24, color: Color(0xFF1A1A1A)),
                 ],
               ),
             ),
@@ -131,7 +144,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 physics: const BouncingScrollPhysics(),
                 itemCount: _orders.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 14),
+                separatorBuilder: (context, index) => const SizedBox(height: 14),
                 itemBuilder: (_, index) {
                   final order = _orders[index];
                   return _OrderCard(
