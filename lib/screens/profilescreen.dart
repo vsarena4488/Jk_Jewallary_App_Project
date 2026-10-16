@@ -4,6 +4,7 @@ import 'package:jk_jewallary_project/widgets/user_bottom_nav.dart';
 import '../authentication/loginscreen.dart';
 
 import 'orderhistoryscreen.dart';
+import 'user_edit_profile_screen.dart';
 import 'wishlistscreen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -79,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
                     const Divider(height: 1, color: Color(0xFFEEEEEE)),
                     _menuItem(context, 'My Wishlist', const WishlistScreen()),
                     const Divider(height: 1, color: Color(0xFFEEEEEE)),
-                    _menuItem(context, 'Edit profile'),
+                    _menuItem(context, 'Edit profile', const UserEditProfileScreen()),
 
                     const SizedBox(height: 120),
 

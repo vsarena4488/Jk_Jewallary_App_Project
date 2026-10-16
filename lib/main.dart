@@ -35,6 +35,7 @@ import 'package:jk_jewallary_project/screens/productdetailsscreen.dart';
 import 'package:jk_jewallary_project/screens/profilescreen.dart';
 import 'package:jk_jewallary_project/screens/searchfilterscreen.dart';
 import 'package:jk_jewallary_project/screens/tearmscreen.dart';
+import 'package:jk_jewallary_project/screens/user_edit_profile_screen.dart';
 import 'package:jk_jewallary_project/screens/wishlistscreen.dart';
 
 void main() => runApp(const MyApp());
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         '/payment': (_) => const PaymentScreen(),
         '/orders': (_) => const OrderHistoryScreen(),
         '/profile': (_) => const ProfileScreen(),
+        '/profile/edit': (_) => const UserEditProfileScreen(),
         '/wishlist': (_) => const WishlistScreen(),
         '/terms': (_) => const TermsScreen(),
         '/admin': (_) => const AdminDashboardScreen(),

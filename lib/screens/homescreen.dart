@@ -27,18 +27,26 @@ class HomeScreen extends StatelessWidget {
                     // ── Top Bar ──
                     Row(
                       children: [
-                        const Icon(
-                          Icons.menu,
-                          size: 26,
-                          color: Color(0xFF1A1A1A),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => Navigator.pushNamed(context, '/profile'),
+                          child: const Icon(
+                            Icons.menu,
+                            size: 26,
+                            color: Color(0xFF1A1A1A),
+                          ),
                         ),
                         const SizedBox(width: 14),
-                        const Text(
-                          'Hi, User',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF1A1A1A),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => Navigator.pushNamed(context, '/profile'),
+                          child: const Text(
+                            'Hi, User',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF1A1A1A),
+                            ),
                           ),
                         ),
                         const Spacer(),
@@ -83,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                               size: 22,
                             ),
                           ),
-                          
+
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(
                             vertical: 14,
@@ -151,7 +159,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 28),
 
                     // ── Popular Products Header ──
-                    _sectionHeader(context, 'Popular Products'),
+                    _sectionHeader(context, 'Products'),
 
                     const SizedBox(height: 16),
 
